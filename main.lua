@@ -13,6 +13,7 @@ SMODS.Atlas({
     path = "balatro.png", 
     px = 333,
     py = 216,
+    prefix_config = { key = false },
     atlas_table = "ASSET_ATLAS"
 })
 
