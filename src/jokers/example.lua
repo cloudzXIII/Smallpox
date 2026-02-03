@@ -1,7 +1,7 @@
 -- Example Joker Atlas
 SMODS.Atlas({
     key = "examplejoker", 
-    path = "jokers\ExampleJoker.png", 
+    path = "jokers/ExampleJoker.png", 
     px = 71,
     py = 95,
     atlas_table = "ASSET_ATLAS"
