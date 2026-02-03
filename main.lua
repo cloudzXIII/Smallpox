@@ -27,7 +27,7 @@ SMODS.Atlas({
 
 -- ASSERTS
 
-assert(SMODS.load_file("src/jokers/example.lua"))() -- The example joker
+assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker
 
 -- Unsure what this does
 local NFS = require("nativefs")
