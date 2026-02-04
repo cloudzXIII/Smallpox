@@ -1,11 +1,13 @@
 SMODS.Atlas({
     key = "tatsu", 
-    path = "jokers/ExampleJoker.png", 
+    path = "jokers/Tatsu.png", 
     px = 71,
     py = 95,
     atlas_table = "ASSET_ATLAS"
 })
 
+
+SMODS.Sound({key = "tatsusfx", path = "tatsu.mp3", sync = true,})
 
 SMODS.Joker{
     key = "Tatsu",
@@ -18,6 +20,8 @@ SMODS.Joker{
     blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
+
+    
 
     remove_from_deck = function(self, card, from_debuff)
         if from_debuff then return end
@@ -46,6 +50,7 @@ SMODS.Joker{
             end
         end
 
+        play_sound('smallpox_tatsusfx', 0.9 + math.random()*0.1, 0.8)
 
         for i = 1, joker_count do
             local pool = {}
@@ -72,10 +77,11 @@ SMODS.Joker{
                 }
 
                 G.jokers:emplace(new_joker)
-                if editions[i] then
+                if editions[i] and editions[i].negative then
                     new_joker:set_edition(editions[i], true)
                 end
                 new_joker:start_materialize()
+                play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
             end
         end
     end
