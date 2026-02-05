@@ -168,6 +168,7 @@ return {
                 name = 'Joker+',
                 text = {
                     "{C:mult}+#1#{} Mult"
+					"{C:inactive,s:0.8}\"our lovely chud son\""
                 }
             },
         },
@@ -178,6 +179,7 @@ return {
     },
   },        
 }
+
 
 
 
