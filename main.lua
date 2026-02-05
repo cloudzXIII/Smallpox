@@ -37,7 +37,7 @@ assert(SMODS.load_file("./src/jokers/breuhh.lua"))() -- Functions by Breuhh
 assert(SMODS.load_file("./src/jokers/miller.lua"))() -- VOIDWALKER by Abel
 assert(SMODS.load_file("./src/jokers/grinch.lua"))() -- Grinch by Soulware
 assert(SMODS.load_file("./src/jokers/vaccine.lua"))() -- Vaccine by mys.minty
-assert(SMODS.load_file("./src/jokers/vaccine.lua"))() -- Astro by Astro, p: LasagnaFelidae
+assert(SMODS.load_file("./src/jokers/astro.lua"))() -- Astro by Astro, p: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/demon_core.lua"))() -- Demon Core by ThunderEdge
 assert(SMODS.load_file("./src/jokers/bliss.lua"))() -- Bliss by LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/typ0.lua"))() -- Blackjack by Typ0
