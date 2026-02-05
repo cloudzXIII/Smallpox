@@ -1,3 +1,10 @@
+--[[
+DO NOT DELETE OUR CHUD SON EXAMPLE JOKER
+DO NOT DELETE OUR CHUD SON EXAMPLE JOKER
+DO NOT DELETE OUR CHUD SON EXAMPLE JOKER
+DO NOT DELETE OUR CHUD SON EXAMPLE JOKER
+]]
+
 -- Example Joker Atlas
 SMODS.Atlas({
     key = "examplejoker", 
@@ -14,10 +21,11 @@ SMODS.Joker {
     rarity = 1,
     blueprint_compat = true,
     cost = 2,
+    pools = {["Smallpox"]= true}, -- must always have smallpox pool, check pools.lua for other defined pools
     discovered = true,
     config = { extra = { mult = 5 }, },
     atlas = 'examplejoker',
-
+    pronouns = 'he_they', -- "she_her" "he_him" "they_them" "any_all" "it_its" "she_they" "he_they"
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
     end,
