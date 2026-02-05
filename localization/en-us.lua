@@ -26,8 +26,8 @@ return {
                     "random Joker to become",
                     "{V:1}infected{} with {C:attention}Smallpox{}"
                 }
-            },
-        },
+            }
+        }
     }
 }
 
