@@ -18,7 +18,7 @@ return {
             },
         },
         Joker = {
-            j_felijo_astro = {
+            j_smallpox_astro = {
 			  name = {
                     "Astro",
                     '{s:0.5}created by {s:0.5,C:blue}Astro{}',
@@ -179,6 +179,7 @@ return {
     },
   },        
 }
+
 
 
 
