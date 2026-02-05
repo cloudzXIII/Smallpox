@@ -60,20 +60,8 @@ return {
                     "{s:0.5}created by {s:0.5,V:2}#2#{}"
                 },
                 text = {
-                    "{X:dark_edition}^#1#{} Mult if all",
-                    "other Jokers are",
-                    "from other mods"
-                }
-            },
-            j_smallpox_mys_minty_vaccine_alt = {
-                name = {
-                    "Vaccine",
-                    "{s:0.5}created by {s:0.5,V:2}#2#{}"
-                },
-                text = {
-                    "{X:dark_edition}^#1#{} Mult if",
-                    "no other Jokers",
-                    "are from {V:1}Smallpox"
+                    "Debuffs {V:1}#1#{} Jokers",
+                    "Debuffed cards give {X:mult,C:white}X#3#{} Mult"
                 }
             },
             j_smallpox_demon_core = {
