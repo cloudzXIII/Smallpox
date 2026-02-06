@@ -185,6 +185,24 @@ return {
 					"{C:inactive,s:0.8}our lovely chud son"
                 }
             },
+            j_smallpox_spikedball = {
+                name = {
+                    'Spiked Ball',
+                    "{s:0.5}created by {s:0.5,C:dark_edition}Pi_Cubed{}{}",
+                },
+                text = {
+                    {
+                        "Adds some {C:attention}obstacles{}",
+                        "to the screen",
+                        "{s:0.8,C:inactive}Difficulty increases over time{}"
+                    },
+                    {
+                        "Played cards give {C:money}$#1#{} when scored",
+                        "if your {C:attention}cursor{} hasn't collided",
+                        "with an obstacle this round",
+                    },
+                }
+            },
         },
   },
   misc = {
