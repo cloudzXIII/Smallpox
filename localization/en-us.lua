@@ -52,7 +52,7 @@ return {
                     "{C:money}$1{} per {C:attention}#6# Carrocoins{}",
                     "{C:inactive}(Currently {C:attention}#1# Carrocoins{C:inactive} and {X:attention,C:white}X#2#{C:inactive} {X:mult,C:white}XMult{C:inactive} and {X:chips,C:white}XChips{C:inactive})",
                 }
-            }
+            },
             j_smallpox_nolittering = {
                 name = {
                       'No Littering',
@@ -373,4 +373,5 @@ return {
     },
   },        
 }
+
 
