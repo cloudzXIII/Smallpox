@@ -297,10 +297,10 @@ return {
             },
             j_smallpox_polymorphine = {
                 name = {
-					'Polymorphine',
-					"{s:0.5}created by {s:0.5,C:blue}NinjaBanana{}{}",
-					"{s:0.5}art by {s:0.5,C:money,E:smallpox_rainbow}???{}{}",
-				},
+                    'Polymorphine',
+                    "{s:0.5}created by {s:0.5,C:blue}NinjaBanana{}{}",
+                    "{s:0.5}art by {s:0.5,C:money,E:smallpox_rainbow}???{}{}",
+                  },
                 text = {
                     "On reroll, {C:attention}randomize{}",
                     "held consumeables"
@@ -308,10 +308,10 @@ return {
             },
             j_smallpox_susie = {
                 name = {
-					"Susie",
-					"{s:0.5}created by {s:0.5,C:white,E:smallpox_pink}MetaNite64{}{}",
-					"{s:0.5}art by {s:0.5,C:money,E:smallpox_rainbow}???{}{}",
-				},
+                      "Susie",
+                      "{s:0.5}created by {s:0.5,C:white,E:smallpox_pink}MetaNite64{}{}",
+                      "{s:0.5}art by {s:0.5,C:money,E:smallpox_rainbow}???{}{}",
+                    },
                 text = {
                     {
                         "Scored {C:attention}8{}s and {C:attention}6{}s are",

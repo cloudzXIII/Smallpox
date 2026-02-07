@@ -136,7 +136,6 @@ SMODS.Gradient{
     key = "fire",
     colours = {
         HEX("ff7300"),
-		HEX("ffba11"),
         HEX("ffd900"),
     },
     cycle = 1
