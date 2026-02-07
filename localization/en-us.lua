@@ -57,7 +57,7 @@ return {
                 name = {
                       'No Littering',
                       '{s:0.5}created by {s:0.5,C:white}GhostSalt{}{}',
-                }
+                },
                 text = {
                     "Gains {C:mult}+#1#{} Mult if",
                     "hand is played with",
@@ -373,3 +373,4 @@ return {
     },
   },        
 }
+
