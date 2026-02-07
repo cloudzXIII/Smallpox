@@ -29,7 +29,7 @@ return {
                     "scored in the {C:attention}last{} played hand",
                     "give {X:mult,C:white}X#1#{} Mult when scored"
                 }
-            }
+            },
             j_smallpox_astro = {
                 name = {
                      "Astro",
@@ -201,8 +201,9 @@ return {
                     "Reduce blind",
                     "requirements by", 
                     "{C:attention}#1#%{}",
-                    },
-                },
+            	},
+            },
+		
             j_smallpox_examplejoker = {
                 name = 'Joker+',
                 text = {
@@ -272,7 +273,7 @@ return {
                 text = {
                     "On reroll, {C:attention}randomize{}",
                     "held consumeables"
-                }
+                },
             },
             j_smallpox_susie = {
                 name = {
@@ -289,8 +290,8 @@ return {
                     {
                         "Played {C:attention}Steel{} cards give",
                         "{C:chips}+#1#{} Chips when scored"
-                    }
-                }
+                    },
+                },
             },
         },
     },
@@ -313,4 +314,5 @@ return {
     },
   },        
 }
+
 
