@@ -274,7 +274,26 @@ return {
                     "held consumeables"
                 }
             },
+            j_smallpox_susie = {
+                name = {
+					"Susie",
+					"{s:0.5}created by {s:0.5,C:smallpox_pink}MetaNite64{}{}",
+					"{s:0.5}art by {s:0.5,C:money,E:smallpox_rainbow}???{}{}",
+				},
+                text = {
+                    {
+                        "Scored {C:attention}8{}s and {C:attention}6{}s are",
+                        "enhanced to {C:attention}Steel{} cards",
+                        "when played"
+                    },
+                    {
+                        "Played {C:attention}Steel{} cards give",
+                        "{C:chips}+#1#{} Chips when scored"
+                    }
+                }
+            },
         },
+    },
 		tooltips = {
 			tt_smallpox_potw_table = {
 				name = "Rarity xMults",
@@ -289,7 +308,8 @@ return {
   },
   misc = {
     dictionary = {
-      mintypox_name = "mys. minty"
+      mintypox_name = "mys. minty",
+      k_steel = "Steel",
     },
   },        
 }

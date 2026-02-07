@@ -41,12 +41,13 @@ assert(SMODS.load_file("./src/sounds.lua"))() -- SOUNDS
 --assert(SMODS.load_file("./src/atlasses.lua"))() -- ATLASSES
 
 assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker
+
 assert(SMODS.load_file("./src/jokers/settheory.lua"))() -- Set Theory by Arta
 assert(SMODS.load_file("./src/jokers/pi_cubed.lua"))() -- Spike Ball by Pi_cubed
 assert(SMODS.load_file("./src/jokers/scales_of_justice.lua"))() -- Scales of Justice by Revo
 assert(SMODS.load_file("./src/jokers/breuhh.lua"))() -- Functions by Breuhh
 assert(SMODS.load_file("./src/jokers/miller.lua"))() -- VOIDWALKER by Abel
-assert(SMODS.load_file("./src/jokers/polymorphine.lua"))() -- Polymorphine by NinjaBanana
+
 assert(SMODS.load_file("./src/jokers/grinch.lua"))() -- Grinch by Soulware
 assert(SMODS.load_file("./src/jokers/vaccine.lua"))() -- Vaccine by mys.minty
 assert(SMODS.load_file("./src/jokers/sillyzteto.lua"))() -- Kasane Teto by Sillyz
@@ -59,6 +60,10 @@ assert(SMODS.load_file("./src/jokers/inky.lua"))() -- Restaurant Menu by Inky, p
 assert(SMODS.load_file("./src/jokers/smallpox.lua"))() -- Smallpox by Plasma
 assert(SMODS.load_file("./src/jokers/hunter.lua"))() -- Notebook Sketch by Hunter
 assert(SMODS.load_file("./src/jokers/tech.lua"))() -- Pox Of The Wild by Tech, p: LasagnaFelidae, a: Plasma
+
+--- THESE JOKERS HAVE PLACEHOLDER ART!!!!!!!!!!
+assert(SMODS.load_file("./src/jokers/polymorphine.lua"))() -- Polymorphine by NinjaBanana
+assert(SMODS.load_file("./src/jokers/meta.lua"))() -- Susie by Meta
 
 
 -- Unsure what this does
