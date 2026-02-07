@@ -141,6 +141,7 @@ SMODS.Gradient{
     cycle = 1
 }
 
+
 --[[
 SPOX.Tooltip{
     key = "potw_table",

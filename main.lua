@@ -58,6 +58,9 @@ assert(SMODS.load_file("./src/jokers/typ0.lua"))() -- Blackjack by Typ0
 assert(SMODS.load_file("./src/jokers/tatsu.lua"))() -- Butterfly Effect by Tatsu, p: Typ0
 assert(SMODS.load_file("./src/jokers/inky.lua"))() -- Restaurant Menu by Inky, p: Typ0
 assert(SMODS.load_file("./src/jokers/smallpox.lua"))() -- Smallpox by Plasma
+<<<<<<< experimental-missingnumber
+assert(SMODS.load_file("./src/jokers/missingnumber.lua"))() -- Smallpox by Plasma
+=======
 assert(SMODS.load_file("./src/jokers/hunter.lua"))() -- Notebook Sketch by Hunter
 assert(SMODS.load_file("./src/jokers/tech.lua"))() -- Pox Of The Wild by Tech, p: LasagnaFelidae, a: Plasma
 assert(SMODS.load_file("./src/jokers/Egbert.lua"))() -- John Egbert, by First Try
@@ -65,6 +68,7 @@ assert(SMODS.load_file("./src/jokers/Egbert.lua"))() -- John Egbert, by First Tr
 assert(SMODS.load_file("./src/jokers/polymorphine.lua"))() -- Polymorphine by NinjaBanana
 assert(SMODS.load_file("./src/jokers/meta.lua"))() -- Susie by Meta
 
+>>>>>>> experimental
 
 -- Unsure what this does (apparently it's Talisman stuff)
 local NFS = require("nativefs")
