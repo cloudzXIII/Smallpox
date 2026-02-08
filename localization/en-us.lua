@@ -33,8 +33,8 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult",
                     "This Joker {C:attention}gains{} {X:mult,C:white}X#4#{} Mult",
-                    "when using a {C:planet}Planet{} card,",
-                    "and {C:red}loses{} {X:mult,C:white}X#4#{} Mult at end of round,",
+                    "when using a {C:planet}Planet{} card",
+                    "{C:red}Loses{} {X:mult,C:white}X#4#{} Mult at end of round",
              
                     "{s:0.8,C:inactive}(Max of {X:mult,C:white,s:0.8}X#2#{s:0.8,C:inactive}, card destroyed at {X:mult,C:white,s:0.8}X#3#{s:0.8,C:inactive}){}"
                 }
@@ -47,7 +47,7 @@ return {
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
 					"per {C:attention}consective{} hand played",
-					'when "{C:attention}Joker!{}" is lit',
+					'when "{C:chips}Joker!{}" is lit',
 					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 },
             },
@@ -77,8 +77,8 @@ return {
 					"{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}",
                 },
                 text = {
-                    "Played {C:hearts}Hearts{} cards become {C:attention}Glass{}.",
-                    "{C:hearts}Glass Hearts{} cards grant", 
+                    "Played {C:hearts}Hearts{} cards become {C:attention}Glass{}",
+                    "{C:attention}Glass{} {C:hearts}Hearts{} cards grant",
 					"{X:blue,C:white}X1.5{} Chips when scored{}",
                 }
             },
@@ -88,13 +88,20 @@ return {
                     '{s:0.5}created by {s:0.5,C:gold}RainStar{}',
                 },
                 text = {
-                    "Whenever you gain {C:money}${}, also gain",
-                    "{C:attention}+#3# Carrocoins{} per {C:money}${}",
+                    {
+                    "Whenever you gain {C:money}${}, gain {C:attention}+#3#{}",
+                    "Carrocoins per {C:money}${}",
+                    },
+                    {
                     "{C:attention}Carrocoins{} can be used to either {C:attention}upgrade{}",
-                    "{X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} by {X:attention,C:white}+X#4#{} per {C:attention}#5# Carrocoin{}",
+                    "{X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} by {X:attention,C:white}+X#4#{} per {C:attention}#5#{} Carrocoin",
                     "or can be {C:attention}converted{} into {C:money}${} at a rate of",
-                    "{C:money}$1{} per {C:attention}#6# Carrocoins{}",
-                    "{C:inactive}(Currently {C:attention}#1# Carrocoins{C:inactive} and {X:attention,C:white}X#2#{C:inactive} {X:mult,C:white}XMult{C:inactive} and {X:chips,C:white}XChips{C:inactive})",
+                    "{C:money}$1{} per {C:attention}#6#{} Carrocoins",
+                    },
+                    {
+                    "{C:inactive}(Currently {C:attention}#1# Carrocoins{C:inactive}",
+                    "{C:inactive}and{} {X:attention,C:white}X#2#{C:inactive}, {X:mult,C:white}XMult{C:inactive} and {X:chips,C:white}XChips{C:inactive})",
+                    }
                 }
             },
             j_smallpox_nolittering = {
@@ -103,9 +110,9 @@ return {
                       '{s:0.5}created by {s:0.5,C:white}GhostSalt{}{}',
                 },
                 text = {
-                    "Gains {C:mult}+#1#{} Mult if",
-                    "hand is played with",
-                    "{C:red}no discards{} used",
+                    "Gains {C:mult}+#1#{} Mult",
+                    "if hand is played",
+                    "without {C:attention}discards{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
@@ -128,10 +135,10 @@ return {
                      "{s:0.5}programmed by {s:0.5,C:edition}LasagnaFelidae{}{}"
                 },
                 text = { 
-                    "Grants {C:chips}#1#{} Chips",
+                    "{C:chips}+#1#{} Chips",
                     "for each {V:1}#2#{} card",
                     "in your deck.",
-                    "{s:0.8,C:inactive}(Currently {}{s:0.8,C:chips}#3#{}{s:0.8,C:inactive} Chips. [#4#])"
+                    "{s:0.8,C:inactive}(Currently {}{s:0.8,C:chips}+#3#{}{s:0.8,C:inactive} Chips. [#4#])"
                 }
             },
             j_smallpox_scales_of_justice = {
@@ -141,10 +148,10 @@ return {
                   "{s:0.5}art by {C:blue,s:0.5}Plasma{}{}"
                 },
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult if the",
-                    "{C:attention}sum{} of the scored cards' ranks is even", 
-                    "Gives an {C:green}extra{} {X:mult,C:white}X#2#{} Mult",
-                    "if there are {C:attention}equal{} amounts of jokers",
+                    "{X:mult,C:white}X#1#{} Mult if the {C:attention}sum{} of",
+                    "the scored cards' ranks is {C:attention}even{}",
+                    "Gives an {C:green}extra{} {X:mult,C:white}X#2#{} Mult if there",
+                    "are {C:attention}equal{} amounts of jokers",
                     "to this card's left and right.",
                 }
             },
@@ -229,7 +236,7 @@ return {
                 },
                 text = {
                     "Debuffs {V:1}#1#{} Jokers",
-                    "Debuffed cards give {X:mult,C:white}X#3#{} Mult"
+                    "{C:inactive}Debuffed cards give{} {X:mult,C:white}X#3#{} {C:inactive}Mult{}"
                 }
             },
             j_smallpox_demon_core = {
@@ -252,10 +259,10 @@ return {
                     '{s:0.5}created by {s:0.5,C:edition}LasagnaFelidae{}',
                 },
                 text = { 
-                    "Gains {C:chips}#1#{} Chips ",
+                    "Gains {C:chips}+#1#{} Chips ",
                     "if {C:attention}#2#{} or more Suits",
                     "have been played",
-                    "{C:inactive}(Currently {}{C:chips}#3#{}{C:inactive} Chips.)"
+                    "{C:inactive}(Currently {}{C:chips}+#3#{}{C:inactive} Chips.)"
                 },
             },
        
@@ -265,9 +272,9 @@ return {
                     "{s:0.5}created by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}",
               },
               text = {
-                    "If {C:attention}two{} cards",
-                    "are {C:attention}played{} that total {C:attention}21{}",
-                    "in Chips, gain"
+                    "If {C:attention}two{} cards are",
+                    "{C:attention}played{} that total {C:attention}21{}",
+                    "in {C:chips}Chips{}, gain"
               },
             },
             j_smallpox_Tatsu = {
@@ -277,10 +284,10 @@ return {
                     "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
                 text = {
-                    "{C:attention}Sell{} this card to",
-                    "{C:red}destroy{} all other Jokers",
-                    "and create an {C:attention}equal{}",
-                    "amount of {C:rare}Rare{} Jokers",
+                    "Sell this card to {C:attention}destroy{}",
+                    "all other Jokers and",
+                    "create an {C:attention}equal amount{}",
+                    "of {C:rare}Rare{} Jokers",
                     "{C:inactive,s:0.8}(Sustains {}{C:dark_edition,s:0.8}Negative{}{C:inactive,s:0.8}){}"
                 }
             },
@@ -291,9 +298,8 @@ return {
                     "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
               text = {
-                    "When {C:attention}sold,{}",
-                    "Create a random",
-                    "{C:attention}Food Joker{}"
+                    "Sell this Joker to create",
+                    "a free {C:attention}Food Joker{}"
                 }
             },
             j_smallpox_miller = {
@@ -322,10 +328,9 @@ return {
                     "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
                 text = {
-                    "Gain {C:mult}X0.1 Mult{}",
-                    "Per hand drawn.",
-                    "{C:attention}Halves{} at end of ante.",
-                    "{C:inactive,s:0.8}[Currently {C:mult}X#1#{C:inactive,s:0.8}]"
+                    "Gain {X:mult,C:white}X0.1{} Mult per hand drawn",
+                    "Gained mult {C:attention}halves{} at end of ante.",
+                    "{C:inactive,s:0.8}[Currently {X:mult,C:white}X#1#{C:inactive,s:0.8}]"
                 },
             },
 
@@ -345,8 +350,8 @@ return {
                       'an additional {X:mult,C:white}+#5#{} xMult',
                     },
                     {
-                      'For every {C:rare}Rare{} and {C:legendary}Legendary{} Joker:',
-                      'retrigger {C:attention}#6#{} time{C:inactive}(s){} this Joker.',
+                      'For every {C:rare}Rare{} and {C:legendary}Legendary{} Joker',
+                      'retrigger this Joker {C:attention}#6#{} time{C:inactive}(s){}',
                     },
                 },
             },
@@ -376,7 +381,7 @@ return {
                   },
                 text = {
                     "On reroll, {C:attention}randomize{}",
-                    "held consumeables"
+                    "held consumables"
                 },
             },
             j_smallpox_susie = {
@@ -387,7 +392,7 @@ return {
                     },
                 text = {
                     {
-                        "Scored {C:attention}8{}s and {C:attention}6{}s are",
+                        "Scored {C:attention}8{} and {C:attention}6{} are",
                         "enhanced to {C:attention}Steel{} cards",
                         "when played"
                     },
