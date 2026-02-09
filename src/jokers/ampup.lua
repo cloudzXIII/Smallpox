@@ -24,7 +24,7 @@ SMODS.Joker {
         if context.press_play and
 		not context.blueprint then
 			local current_frame = card.children.center.current_animation.current
-			print(card.children.center.current_animation.current)
+			print("Amp Up Frame - " .. card.children.center.current_animation.current)
 			if current_frame >= 5 then
 
 				SMODS.scale_card(card, {
