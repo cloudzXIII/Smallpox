@@ -69,7 +69,7 @@ assert(SMODS.load_file("./src/jokers/demon_core.lua"))() -- Demon Core by Thunde
 assert(SMODS.load_file("./src/jokers/breuhh.lua"))() -- Functions by Breuhh
 assert(SMODS.load_file("./src/jokers/sillyzteto.lua"))() -- Kasane Teto by Sillyz
 assert(SMODS.load_file("./src/jokers/hunter.lua"))() -- Notebook Sketch by Hunter
-assert(SMODS.load_file("./src/jokers/polymorphine.lua"))() -- Polymorphine by NinjaBanana
+assert(SMODS.load_file("./src/jokers/polymorphine.lua"))() -- Polymorphine by NinjaBanana, a: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/roomtemperaturecarrot.lua"))() -- Room Temp. Carrot by Rainstar
 assert(SMODS.load_file("./src/jokers/scales_of_justice.lua"))() -- Scales of Justice by Revo
 assert(SMODS.load_file("./src/jokers/seethroughthejoke.lua"))() -- See Through the Joke by Flynn
