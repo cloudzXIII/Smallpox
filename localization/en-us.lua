@@ -24,6 +24,22 @@ return {
             },
         },
         Joker = {
+            j_smallpox_tjetsu_sumi = {
+                name = {
+                    "Sumi",
+                    "{s:0.5}created by {C:tarot,s:0.5}Tje.Tsu{}{}",
+                },
+                text = {
+                    {"Scored {C:hearts}Hearts{} give",
+                    "{X:mult,C:white}X#2#{} Mult if scored",
+                    "after a {C:spades}Spade{}"},
+                    {"Scored {C:spades}Spades{} give",
+                    "{X:chips,C:white}X#1#{} Chips if scored",
+                    "after a {C:hearts}Heart{}"},
+                    {"{C:inactive}(Last scored : {V:1}#3#{}{C:inactive}){}"}
+                }
+            }
+ 
             j_smallpox_seethrujoke = {
                 name = {
                   'See Through The Joke',
@@ -168,10 +184,10 @@ return {
 
             j_smallpox_sillyzteto = {
                 name = {
-					"Kasane Teto",
-					"{s:0.5}created by {C:purple,s:0.5}Sillyz",
-                  	"{s:0.5}art by {C:blue,s:0.5}Plasma, {C:edition,s:0.5}LasagnaFelidae{}{}{}"
-					},
+                      "Kasane Teto",
+                      "{s:0.5}created by {C:purple,s:0.5}Sillyz",
+                      "{s:0.5}art by {C:blue,s:0.5}Plasma, {C:edition,s:0.5}LasagnaFelidae{}{}{}"
+                      },
                 text = {
                     "Gain {X:mult,C:white}X#1#{} Mult for every",
                     "{C:attention}Ace{} of {C:hearts}Hearts{} destroyed",

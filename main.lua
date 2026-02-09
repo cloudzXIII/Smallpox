@@ -52,6 +52,7 @@ assert(SMODS.load_file("./src/jokers/Atlas.lua"))() -- Atlas by ABuffZucchini
 assert(SMODS.load_file("./src/jokers/typ0.lua"))() -- Blackjack by Typ0
 assert(SMODS.load_file("./src/jokers/inky.lua"))() -- Restaurant Menu by Inky, p: Typ0
 assert(SMODS.load_file("./src/jokers/settheory.lua"))() -- Set Theory by Arta
+assert(SMODS.load_file("./src/jokers/tjetsu_sumi.lua"))() -- Sumi by Tsutje
 assert(SMODS.load_file("./src/jokers/pi_cubed.lua"))() -- Spike Ball by Pi_cubed
 assert(SMODS.load_file("./src/jokers/meta.lua"))() -- Susie by Meta
 assert(SMODS.load_file("./src/jokers/grinch.lua"))() -- Grinch by Soulware
@@ -75,6 +76,7 @@ assert(SMODS.load_file("./src/jokers/miller.lua"))() -- VOIDWALKER by Abel
 ---LEGENDARY
 assert(SMODS.load_file("./src/jokers/Egbert.lua"))() -- John Egbert, by First Try
 assert(SMODS.load_file("./src/jokers/tech.lua"))() -- Pox Of The Wild by Tech, p: LasagnaFelidae, a: Plasma
+
 
 
 -- Unsure what this does (apparently it's Talisman stuff)
