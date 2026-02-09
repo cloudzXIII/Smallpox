@@ -3,7 +3,7 @@ SMODS.Atlas {
 	path = "jokers/jokerhythm.png",
 	atlas_table = 'ANIMATION_ATLAS',
 	frames = 8,
-	fps = 4,
+	fps = 6,
 	px = 71,
 	py = 95
 }
@@ -14,17 +14,17 @@ SMODS.Joker {
 	atlas = 'Amp_Up',
 	pos = { x = 0, y = 0 },
 	cost = 5,
-	config = { extra = { chip_mod = 10, chips = 0 } },
+	config = { extra = { chip_mod = 12, chips = 0 } },
 	pools = {["Smallpox"] = true},
 	pronouns = "it_its", 
 	loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips, colours = {HEX('501299'),} } }
+        return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }
     end,
     calculate = function(self, card, context)
         if context.press_play and
 		not context.blueprint then
 			local current_frame = card.children.center.current_animation.current
-			print(card.children.center.current_animation.current)
+			print("Amp Up Frame - " .. card.children.center.current_animation.current)
 			if current_frame >= 5 then
 
 				SMODS.scale_card(card, {
