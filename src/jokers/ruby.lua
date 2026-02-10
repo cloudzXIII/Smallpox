@@ -24,7 +24,7 @@ SMODS.Atlas({
     px = 34,
     py = 34,
 })
-function Smallpox.get_selected_deck()
+function SPOX.get_selected_deck()
     if G.STATE == G.STATES.MENU then
         return
     end
@@ -49,10 +49,10 @@ SMODS.Joker {
     },
     blueprint_compat = true,
     loc_vars = function(self, q, card)
-        local key = Smallpox.get_selected_deck() and Smallpox.get_selected_deck():sub(3, 999) or nil
+        local key = SPOX.get_selected_deck() and SPOX.get_selected_deck():sub(3, 999) or nil
         local vars = {}
         if key == "erratic" then
-            card.ability.erratic_lines = Smallpox.randomize_desc(card.ability.erratic_lines)
+            card.ability.erratic_lines = SPOX.randomize_desc(card.ability.erratic_lines)
         end
         if key == "zodiac" and card.ability.zodiac_set then
             key = key.."_"..card.ability.zodiac_set
@@ -97,28 +97,28 @@ SMODS.Joker {
         }
     end,
     add_to_deck = function(self, card)
-        if Smallpox.get_selected_deck() == "b_blue" then    
+        if SPOX.get_selected_deck() == "b_blue" then    
             SMODS.change_play_limit(card.ability.blue_csl)
         end
-        if Smallpox.get_selected_deck() == "b_black" and not card.ability.black_added then
+        if SPOX.get_selected_deck() == "b_black" and not card.ability.black_added then
             card.ability.black_added = true
             local card = SMODS.add_card {set = "Joker"}
             card.ability.eternal = true
             card:set_edition("e_negative")
         end
-        if Smallpox.get_selected_deck() == "b_plasma" then
+        if SPOX.get_selected_deck() == "b_plasma" then
             SMODS.set_scoring_calculation("smallpox_plasma_birthright")
             G.GAME.old_operator = "smallpox_plasma_birthright"
         end
-        if Smallpox.get_selected_deck() == "b_erratic" then
-            local _, ind = pseudorandom_element(Smallpox.erratic.effects)
-            local _, ind2 = pseudorandom_element(Smallpox.erratic.conditions)
+        if SPOX.get_selected_deck() == "b_erratic" then
+            local _, ind = pseudorandom_element(SPOX.erratic.effects)
+            local _, ind2 = pseudorandom_element(SPOX.erratic.conditions)
             card.ability.erratic_effect = ind
             card.ability.erratic_condition = ind2 
         end
     end,
     set_sprites = function(self, card)
-        if Smallpox.get_selected_deck() == "b_erratic" then
+        if SPOX.get_selected_deck() == "b_erratic" then
             if card.ability then
                 card.ability.erratic_pos = card.ability.erratic_pos or {x=math.floor(math.random()*9),y=math.floor(math.random()*15)}
                 card.children.center.atlas = G.ASSET_ATLAS["smallpox_ruby_birthright_glitched"]
@@ -137,22 +137,22 @@ SMODS.Joker {
         end
     end,
     remove_from_deck = function(self, card)
-        if Smallpox.get_selected_deck() == "b_blue" then    
+        if SPOX.get_selected_deck() == "b_blue" then    
             SMODS.change_play_limit(-card.ability.blue_csl)
         end
-        if Smallpox.get_selected_deck() == "b_plasma" and #SMODS.find_card("j_smallpox_birthright") == 0 then
+        if SPOX.get_selected_deck() == "b_plasma" and #SMODS.find_card("j_smallpox_birthright") == 0 then
             SMODS.set_scoring_calculation("multiply")
             G.GAME.old_operator = nil
         end
     end,
     calculate = function(self, card, context)
         if card.ability.erratic_condition then
-            if Smallpox.erratic.conditions[card.ability.erratic_condition](self, card, context) then 
-                return Smallpox.erratic.effects[card.ability.erratic_effect](self, card, context) end
+            if SPOX.erratic.conditions[card.ability.erratic_condition](self, card, context) then 
+                return SPOX.erratic.effects[card.ability.erratic_effect](self, card, context) end
         end
         if context.repetition then
             if context.cardarea == G.play then
-                if Smallpox.get_selected_deck() == "b_blue" then    
+                if SPOX.get_selected_deck() == "b_blue" then    
                     local ind = 0
                     for i, v in pairs(G.play.cards) do
                         if v == context.other_card then ind = i; break end
@@ -163,7 +163,7 @@ SMODS.Joker {
                         }
                     end
                 end
-                if Smallpox.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Tarot" and context.other_card.config.center.set ~= "Default" then
+                if SPOX.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Tarot" and context.other_card.config.center.set ~= "Default" then
                     return {
                         repetitions = 1
                     }
@@ -171,7 +171,7 @@ SMODS.Joker {
             end
         end
         if context.using_consumeable then
-            if Smallpox.get_selected_deck() == "b_nebula" and context.consumeable.config.center.set == "Planet"
+            if SPOX.get_selected_deck() == "b_nebula" and context.consumeable.config.center.set == "Planet"
                 and context.consumeable.ability.hand_type
             then
                 local t = context.consumeable.ability.hand_type
@@ -181,7 +181,7 @@ SMODS.Joker {
                     end
                 }
             end
-            if Smallpox.get_selected_deck() == "b_checkered" and context.consumeable.config.center.set == "Tarot"
+            if SPOX.get_selected_deck() == "b_checkered" and context.consumeable.config.center.set == "Tarot"
                 and context.consumeable.ability.suit_conv
             then
                 G.GAME.birthright_checkered_suit = context.consumeable.ability.suit_conv
@@ -190,7 +190,7 @@ SMODS.Joker {
                     colour = G.C.SUITS[G.GAME.birthright_checkered_suit]
                 }
             end
-            if Smallpox.get_selected_deck() == "b_zodiac" and
+            if SPOX.get_selected_deck() == "b_zodiac" and
                 (
                     context.consumeable.config.center.set == "Tarot"
                     or context.consumeable.config.center.set == "Spectral"
@@ -198,11 +198,11 @@ SMODS.Joker {
                 )
             then
                 card.ability.zodiac_set = context.consumeable.config.center.set
-                Smallpox.birthright_zodiac(context.consumeable.config.center.set)
+                SPOX.birthright_zodiac(context.consumeable.config.center.set)
             end
         end
         if context.joker_main then
-            if Smallpox.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Planet" then
+            if SPOX.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Planet" then
                 local c = G.GAME.hands[context.scoring_name].chips
                 local m = G.GAME.hands[context.scoring_name].mult
                 return {
@@ -212,7 +212,7 @@ SMODS.Joker {
             end
         end
         if context.before then
-            if Smallpox.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Spectral" and #G.play.cards == 2 then
+            if SPOX.get_selected_deck() == "b_zodiac" and card.ability.zodiac_set == "Spectral" and #G.play.cards == 2 then
                 local card = pseudorandom_element(G.play.cards, pseudoseed("birthright_zodiac_spectral"))
                 return {
                     func = function()
@@ -221,7 +221,7 @@ SMODS.Joker {
                 }
             end
         end
-        if context.individual and context.cardarea == G.hand and Smallpox.get_selected_deck() == "b_painted" and not context.end_of_round then
+        if context.individual and context.cardarea == G.hand and SPOX.get_selected_deck() == "b_painted" and not context.end_of_round then
             context.cardarea = G.play
             context.main_scoring = true
             local eval, post = eval_card(context.other_card, context)
@@ -238,11 +238,11 @@ SMODS.Joker {
         end
     end,
     br_usebutton = function()
-        local d = Smallpox.get_selected_deck()
+        local d = SPOX.get_selected_deck()
         return d == "b_yellow" or d == "b_black" or d == "b_abandoned"
     end,
     brcan_use = function(self, card)
-        local d = Smallpox.get_selected_deck()
+        local d = SPOX.get_selected_deck()
         if d == "b_yellow" then return true end
         if d == "b_black" then
             local cards = {}
@@ -258,7 +258,7 @@ SMODS.Joker {
         end
     end,
     bruse = function(self, card)
-        local d = Smallpox.get_selected_deck()
+        local d = SPOX.get_selected_deck()
         if d == "b_yellow" then
             G.FUNCS.overlay_menu {
                 definition = create_UIBox_stocks()
@@ -276,7 +276,7 @@ SMODS.Joker {
                     cards[#cards+1] = v
                 end
             end
-            Smallpox.flip_then(cards, function(c)
+            SPOX.flip_then(cards, function(c)
                 local _pool, _pool_key = get_current_pool("Joker", c.config.center.rarity, c.config.center.rarity == 4, "birthright_black")
                 local center = pseudorandom_element(_pool, pseudoseed(_pool_key))
                 local it = 1
@@ -535,7 +535,7 @@ function alert_no_space_tag()
     return true end}))
 end
 
-function Smallpox.negative_tags()
+function SPOX.negative_tags()
     local t = 0
     for i, v in pairs(G.GAME.tags) do
         if v.ability.negative then t = t + 1 end
@@ -543,7 +543,7 @@ function Smallpox.negative_tags()
     return t
 end
 
-function Smallpox.any_doubles()
+function SPOX.any_doubles()
     for i, v in pairs(G.GAME.tags) do
         if v.key == "tag_double" then return true end
     end
@@ -551,7 +551,7 @@ end
 
 local add_tag_ref = add_tag
 function add_tag(tag, ...)
-    if next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_anaglyph" and #G.GAME.tags >= (10 + Smallpox.negative_tags()) and not tag.ability.negative and not Smallpox.any_doubles() then
+    if next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_anaglyph" and #G.GAME.tags >= (10 + SPOX.negative_tags()) and not tag.ability.negative and not SPOX.any_doubles() then
         alert_no_space_tag()
     else
         G.GAME.smallpox_tags = (G.GAME.smallpox_tags or 0) + 1
@@ -573,7 +573,7 @@ SMODS.Tag:take_ownership("double", {
                     G.orbital_hand = context.tag.ability.orbital_hand
                 end
                 add_tag(Tag(context.tag.key))
-                if next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_anaglyph" then
+                if next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_anaglyph" then
                     local t2 = Tag(context.tag.key)
                     t2.ability.negative = true
                     add_tag(t2)
@@ -588,8 +588,8 @@ SMODS.Tag:take_ownership("double", {
 }, true)
 
 -- stolen from entropy
-function Smallpox.flip_then(cardlist, func, before, after)
-    if not Smallpox.should_skip_animations() then
+function SPOX.flip_then(cardlist, func, before, after)
+    if not SPOX.should_skip_animations() then
         for i, v in ipairs(cardlist) do
             local card = cardlist[i]
             if card then
@@ -639,7 +639,7 @@ function Smallpox.flip_then(cardlist, func, before, after)
             end
         end
     end
-    if not Smallpox.should_skip_animations() then
+    if not SPOX.should_skip_animations() then
         for i, v in ipairs(cardlist) do
             local card = cardlist[i]
             if card then
@@ -669,7 +669,7 @@ function Smallpox.flip_then(cardlist, func, before, after)
     end
 end
 
-function Smallpox.should_skip_animations(strict)
+function SPOX.should_skip_animations(strict)
     if Talisman and Talisman.config_file.disable_anims then return true end
     if Handy and Handy.animation_skip.get_value() >= (strict and 4 or 3) then return true end
 end
@@ -677,7 +677,7 @@ end
 SMODS.Booster:take_ownership_by_kind("Arcana", {
     create_card = function(self, card, i)
         local _card
-        if next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_magic" and i == 1 then
+        if next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_magic" and i == 1 then
             _card = {
                 set = "Tarot",
                 area = G.pack_cards,
@@ -703,7 +703,7 @@ SMODS.Consumable:take_ownership("c_fool", {
     can_use = function(self, card)
         return (#G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables) and
             G.GAME.last_tarot_planet and
-            (G.GAME.last_tarot_planet ~= 'c_fool' or (next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_magic"))
+            (G.GAME.last_tarot_planet ~= 'c_fool' or (next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_magic"))
     end ,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -714,7 +714,7 @@ SMODS.Consumable:take_ownership("c_fool", {
                     play_sound('timpani')
                     local key = G.GAME.last_tarot_planet
                     local set
-                    if G.GAME.last_tarot_planet == 'c_fool' and next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_magic" then
+                    if G.GAME.last_tarot_planet == 'c_fool' and next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_magic" then
                         key = nil
                         set = "Spectral"
                     end
@@ -728,7 +728,7 @@ SMODS.Consumable:take_ownership("c_fool", {
     end,
 })
 
-Smallpox.planet_tags = {
+SPOX.planet_tags = {
     {consumable = "pluto", pos = {x=0,y=0}, hand = "High Card"},
     {consumable = "mercury", pos = {x=1,y=0}, hand = "Pair"},
     {consumable = "venus", pos = {x=2,y=0}, hand = "Three of a Kind"},
@@ -886,7 +886,7 @@ SMODS.Scoring_Calculation {
 
 local mod_mult_ref = mod_mult
 function mod_mult(m,...)
-    if not (Smallpox.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright"))) then
+    if not (SPOX.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright"))) then
         return mod_mult_ref(m, ...)
     else    
         return 2
@@ -895,7 +895,7 @@ end
 
 local scie = SMODS.calculate_individual_effect
 function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
-    if Smallpox.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
+    if SPOX.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
         --hacky solution
         --probably want a whitelist of effects in the future
         --but should work fine if everyone uses standard capitalisation
@@ -912,7 +912,7 @@ end
 local parse_highlighted_ref = CardArea.parse_highlighted
 function CardArea:parse_highlighted(...)
     local ret = parse_highlighted_ref(self, ...)
-    if Smallpox.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
+    if SPOX.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
         SMODS.Scoring_Parameters.mult.current = 2
         update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 2})
     end
@@ -921,7 +921,7 @@ end
 
 local update_hand_text_ref = update_hand_text
 function update_hand_text(_, vals, ...)
-    if vals and vals.mult and Smallpox.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
+    if vals and vals.mult and SPOX.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright")) then
         vals.mult = 2
     end
     return update_hand_text_ref(_, vals, ...)
@@ -1020,7 +1020,7 @@ SMODS.Atlas {
     fps = 14
 }
 
-function Smallpox.birthright_zodiac(set)
+function SPOX.birthright_zodiac(set)
     play_sound("smallpox_birthright_zodiac_attune", 8)
     sprite_attention_text({
         scale = 1,
@@ -1039,7 +1039,7 @@ function Smallpox.birthright_zodiac(set)
     })
 end
 
-function Smallpox.randomize_desc(lines)
+function SPOX.randomize_desc(lines)
     local slines = lines or {}
     if not lines then
         local controls = {}
@@ -1138,7 +1138,7 @@ function string.split(inputstr, sep)
   return t
 end
 
-Smallpox.erratic = {
+SPOX.erratic = {
     effects = {
         function(self, card, context) return {mult = 8} end,
         function(self, card, context) return {chips = 80} end,
@@ -1518,7 +1518,7 @@ Smallpox.erratic = {
             local card1 = pseudorandom_element(area.cards, pseudoseed("erratic_birthright_cards"))
             local card2 = pseudorandom_element(area.cards, pseudoseed("erratic_birthright_cards"))
             local card = pseudorandom("erratic_5050") and card1 or card2
-            Smallpox.flip_then({card1, card2}, function(c)
+            SPOX.flip_then({card1, card2}, function(c)
                 if c == card then
                     copy_card(c, card == card1 and card2 or card1)
                 end
@@ -1531,7 +1531,7 @@ Smallpox.erratic = {
             for i = 1, math.floor(pseudorandom("birthright_cards_num")*4)+1 do
                 cards[#cards+1] = pseudorandom_element(area.cards, pseudoseed("erratic_birthright_cards"))
             end
-            Smallpox.flip_then(cards, function(c)
+            SPOX.flip_then(cards, function(c)
                 c:set_ability(G.P_CENTERS[enhancement])
             end)
         end,
@@ -1615,7 +1615,7 @@ Smallpox.erratic = {
             for i = 1, math.floor(pseudorandom("birthright_cards_num")*4)+1 do
                 cards[#cards+1] = pseudorandom_element(area.cards, pseudoseed("erratic_birthright_cards"))
             end
-            Smallpox.flip_then(cards, function(c)
+            SPOX.flip_then(cards, function(c)
                 assert(SMODS.modify_rank(c, 1))
             end)
         end,
@@ -1660,7 +1660,7 @@ Smallpox.erratic = {
             for i, v in pairs(SMODS.Suits) do
                 if not v.in_pool or v:in_pool({}) then suits[#suits+1] = i end
             end
-            Smallpox.flip_then(cards, function(c)
+            SPOX.flip_then(cards, function(c)
                 SMODS.change_base(card, pseudorandom_element(suits, pseudoseed("erratic_birthright_suit")), nil)
             end)
         end,
@@ -1777,7 +1777,7 @@ Smallpox.erratic = {
 local create_card_ref = create_card
 function create_card(...)
     local card = create_card_ref(...)
-    if card.config.center.set == "Joker" and next(SMODS.find_card("j_smallpox_birthright")) and Smallpox.get_selected_deck() == "b_erratic" then
+    if card.config.center.set == "Joker" and next(SMODS.find_card("j_smallpox_birthright")) and SPOX.get_selected_deck() == "b_erratic" then
         card:set_ability(G.P_CENTERS.j_smallpox_birthright)
     end
     return card
