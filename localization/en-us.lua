@@ -560,6 +560,34 @@ return {
                     "remainder of the current ante"
                 }
             },
+            j_smallpox_birthright_ghost = {
+                name = {
+                    "Birthright",
+                    "{s:0.8,C:inactive}Better Destiny{}",
+                    "{s:0.5}created by {IMG:smallpox_ruby_paw,s:0.35}a{}{s:0.35} {}{C:red,s:0.5}Ruby{}",
+                },
+                text = {
+                    {
+                        "Shop contains an extra",
+                        "{C:spectral}Spectral{} card slot",
+                        "that can be rerolled"
+                    }
+                }
+            },
+            j_smallpox_birthright_nebula = {
+                name = {
+                    "Birthright",
+                    "{s:0.8,C:inactive}Interstellar{}",
+                    "{s:0.5}created by {IMG:smallpox_ruby_paw,s:0.35}a{}{s:0.35} {}{C:red,s:0.5}Ruby{}",
+                },
+                text = {
+                    "Using a Planet card",
+                    "provides its {C:red}Mult{} per level",
+                    "and {C:blue}Chips{} per level",
+                    "to all hands for the",
+                    "remainder of the current ante"
+                }
+            },
             j_smallpox_birthright_abandoned = {
                 name = {
                     "Birthright",
@@ -822,5 +850,3 @@ return {
   },        
 
 }
-
-

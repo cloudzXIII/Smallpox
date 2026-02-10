@@ -28,7 +28,9 @@ function SPOX.get_selected_deck()
     if G.STATE == G.STATES.MENU then
         return
     end
-    return G.GAME.selected_back and G.GAME.selected_back.effect and G.GAME.selected_back.effect and G.GAME.selected_back.effect.center.key
+    local ret = G.GAME.selected_back and G.GAME.selected_back.effect and G.GAME.selected_back.effect and G.GAME.selected_back.effect.center.key
+	if ret == "b_challenge" then ret = "b_erratic" end --lol
+	return ret
 end
 
 SMODS.Joker {
@@ -1164,11 +1166,6 @@ SPOX.erratic = {
                         return true
                     end
                 }))
-                return {
-                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult + 2 * sliced_card.sell_cost } },
-                    colour = G.C.RED,
-                    no_juice = true
-                }
             end
         end,
         function(self, card, context) return {chips = G.GAME.current_round.discards_left * 30} end,
@@ -1258,7 +1255,7 @@ SPOX.erratic = {
                     ease_discard(-G.GAME.current_round.discards_left, nil, true)
                     ease_hands_played(4)
                     SMODS.calculate_effect(
-                        { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.extra.hands } } },
+                        { message = localize { type = 'variable', key = 'a_hands', vars = { 4 } } },
                         context.blueprint_card or card)
                     return true
                 end
@@ -1554,11 +1551,20 @@ SPOX.erratic = {
                 func = function()
                     play_sound('timpani')
                     card:juice_up(0.3, 0.5)
-                    ease_dollars(math.max(0, math.min(G.GAME.dollars, card.ability.extra.max)), true)
+                    ease_dollars(math.max(0, math.min(G.GAME.dollars, 20)), true)
                     return true
                 end
             }))
             delay(0.6)
+        end,
+		function(self, card, context)
+            add_planet(context.scoring_name or "High Card")
+        end,
+		function(self, card, context)
+			local hands = {}
+			for i, v in pairs(G.GAME.hands) do hands[#hands+1] = i end
+			local hand = pseudorandom_element(hands, pseudoseed("erratic_birthright_planet_tag"))
+            add_planet(hand or "High Card")
         end,
         function(self, card, context)
             if SMODS.pseudorandom_probability(card, 'wheel_of_fortune', 1, 2) then
@@ -1762,7 +1768,9 @@ SPOX.erratic = {
         function(self, card, context) return context.selling_card end,
         function(self, card, context) return context.game_over end,
         function(self, card, context) return context.skip_blind end,
-        function(self, card, context) return context.remove_playing_cards end
+        function(self, card, context) return context.individual and context.cardarea == G.hand end,
+		function(self, card, context) return context.individual and context.cardarea == G.play end,
+		function(self, card, context) return context.individual and context.cardarea == "unscored" end,
     }
 }
 
