@@ -14,7 +14,7 @@ position = "before"
 payload = '''
 if next(SMODS.find_card("j_smallpox_birthright")) and
     G.smallpox_discarded_cards and 
-    Smallpox.get_selected_deck() == "b_red" and
+    SPOX.get_selected_deck() == "b_red" and
     (G.GAME.current_round.hands_played > 0 or
     G.GAME.current_round.discards_used > 0) then
         hand_space = math.min(#G.deck.cards, G.smallpox_discarded_cards + #SMODS.find_card("j_smallpox_birthright"))
@@ -85,7 +85,7 @@ match_indent = true
 payload = '''
 if self and self.config.tag and self.config.tag.ability and self.config.tag.ability.birthright_planet and self.atlas.name ~= "smallpox_ruby_planets" then
     local t
-    for i, v in pairs(Smallpox.planet_tags) do
+    for i, v in pairs(SPOX.planet_tags) do
         if v.hand == self.config.tag.ability.birthright_planet then
             t = v
         end
@@ -152,7 +152,7 @@ G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAM
 position = 'at'
 match_indent = true
 payload = '''
-if Smallpox.get_selected_deck() == "b_green" and s ~= 'Defeated' and next(SMODS.find_card("j_smallpox_birthright")) then
+if SPOX.get_selected_deck() == "b_green" and s ~= 'Defeated' and next(SMODS.find_card("j_smallpox_birthright")) then
     G.GAME.current_round.discards_left = G.GAME.current_round.discards_left + G.GAME.round_resets.discards + G.GAME.round_bonus.discards
     G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands
 else
@@ -172,7 +172,7 @@ G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAM
 position = 'at'
 match_indent = true
 payload = '''
-if Smallpox.get_selected_deck() == "b_green" and next(SMODS.find_card("j_smallpox_birthright")) then
+if SPOX.get_selected_deck() == "b_green" and next(SMODS.find_card("j_smallpox_birthright")) then
 
 else
     G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
@@ -270,7 +270,7 @@ G.shop_jokers = CardArea(
 position = 'at'
 match_indent = true
 payload = '''
-if Smallpox.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) then
+if SPOX.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) then
     G.shop_jokers = CardArea(
       G.hand.T.x+0,
       G.hand.T.y+G.ROOM.T.y + 9,
@@ -304,10 +304,10 @@ pattern = '''
 position = 'at'
 match_indent = true
 payload = '''
-{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = (Smallpox.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) and 8.2*0.75 or 8.2)}, nodes={
+{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = (SPOX.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) and 8.2*0.75 or 8.2)}, nodes={
     {n=G.UIT.O, config={object = G.shop_jokers}},
 }},
-Smallpox.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) and {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = (8.2*0.25)}, nodes={
+SPOX.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_birthright")) and {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = (8.2*0.25)}, nodes={
     {n=G.UIT.O, config={object = G.shop_spectral}},
 }} or nil,
 '''
@@ -388,7 +388,7 @@ if self.name == 'Plasma Deck' and args.context == 'final_scoring_step' then
 position = 'at'
 match_indent = true
 payload = '''
-if self.name == 'Plasma Deck' and args.context == 'final_scoring_step' and not (Smallpox.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright"))) then
+if self.name == 'Plasma Deck' and args.context == 'final_scoring_step' and not (SPOX.get_selected_deck() == "b_plasma" and next(SMODS.find_card("j_smallpox_birthright"))) then
 '''
 
 # Sprite in description
