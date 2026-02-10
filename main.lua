@@ -110,7 +110,7 @@ function Game:main_menu(change_context)
         })
 
     return ret
-    end
+
 end
 
 --moved here for merging sake
