@@ -765,6 +765,20 @@ return {
                     "gain {C:money}$#1#{}"
                 }
             }
+            j_smallpox_theriantropy = {
+                name = {
+                    "Theriantropy",
+                    "{s:0.5}created by Jewel",
+                },
+                text = {
+                "When a {C:attention}face card{} is {C:attention}scored,",
+                "{C:green}1 in 2{} chance to make it {C:gold}Wild,",
+                "{C:green}1 in 10{} chance to destroy this {C:attention}Joker",
+                "and create a copy of {C:spectral}The Cryptid", 
+                "{s:0.8,C:inactive}(Must have room)",
+                    
+                }
+            },
         },
         --not actually an edition, used on tags
         Edition = {
