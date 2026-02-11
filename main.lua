@@ -76,7 +76,7 @@ assert(SMODS.load_file("./src/jokers/missingnumber.lua"))() -- Stained Glass Win
 assert(SMODS.load_file("./src/jokers/miller.lua"))() -- VOIDWALKER by Abel
 
 ---LEGENDARY
-assert(SMODS.load_file("./src/jokers/Egbert.lua"))() -- John Egbert, by First Try
+assert(SMODS.load_file("./src/jokers/Egbert.lua"))() -- John Egbert, by FirstTry
 assert(SMODS.load_file("./src/jokers/tech.lua"))() -- Pox Of The Wild by Tech, p: LasagnaFelidae, a: Plasma
 
 --uncatagorized
