@@ -233,6 +233,19 @@ return {
                     "{V:1}infected{} with {C:attention}Smallpox{}"
                 }
             },
+            j_smallpox_antique_chair = {
+                name = {
+                    "Antique Chair",
+                    "{s:0.5}created by {C:gold,s:0.5}cloudzXIII{}{}",
+                },
+                text = {
+                    "This Joker gains {C:white,X:mult}X#2#{} Mult",
+                    "when {C:dark_edition}swapped{} with",
+                    "a card in the shop",
+                    "{s:0.8}Gains {C:money,s:0.8}$1{} {s:0.8}of {C:attention,s:0.8}buy value{} {s:0.8}every {C:dark_edition,s:0.8}SWAP{}",
+                    "{C:inactive}(Currently {C:white,X:mult}X#1#{}{C:inactive} Mult)"
+                }
+            },
             j_smallpox_grinch = {
                 name = {
                     'The Grinch',
