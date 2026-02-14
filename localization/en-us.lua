@@ -50,7 +50,7 @@ return {
             },
  			j_smallpox_iwillnever = {
                 name = {
-                    "I will never use JokerForge to make mods again",
+                    "I Will never use JokerForge to make mods again",
                     "{s:0.5}created by {V:1,s:0.5}Edward Robinson{}{}",
 					"{s:0.5}programmed by {s:0.5,C:edition}LasagnaFelidae{}{}"
                 },
@@ -965,6 +965,7 @@ return {
   },        
 
 }
+
 
 
 
