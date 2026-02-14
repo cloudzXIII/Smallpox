@@ -149,67 +149,58 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
+        
         local e = card.ability.extra
         local s = get_system_state()
 
-        local mult = e.base_mult
-        local chips = 0
-
-        local letters = s.clipboard:gsub("[^%a]", "")
-
-        
-
         if context.joker_main then
-            return {
-                mult = e.base_mult + #letters
-            }
-        end
+            local mult = e.base_mult
+            local chips = 0
+            local money = 0
 
-        print(s.friday)
+            if s.friday then
+                mult = mult + e.friday_mult
+            end
 
-        if context.joker_main and s.friday then
-            return {
-                mult = e.base_mult + e.friday_mult
-            }
-        end
+            if s.four_pm then
+                mult = mult * (e.pm_xmult ^ context.full_hand_size)
+            end
 
-        if context.joker_main and s.four_pm then
-            return {
-                xmult = e.pm_xmult * context.full_hand
-            }
-        end
+            if s.june then
+                chips = chips + (e.june_xchips * #G.consumeables.cards)
+            end
 
-        if context.joker_main and s.june then
-            return {
-                xchips = e.june_xchips * #G.consumeables.cards
-            }
-        end
+            if s.cpu > e.cpu_req then
+                for _, j in ipairs(G.jokers.cards) do
+                    if j.config.center.rarity == 3 then
+                        chips = chips * e.rare_xchips
+                    end
+                end
+            end
 
-        if context.other_joker and (context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon") and s.cpu > e.cpu_req then
-            return {
-                xchips = e.rare_xchips
-            }
-        end
+            if s.fps < 30 then
+                money = money + (e.lowfps_money * context.full_hand_size)
+            end
 
-        if context.joker_main and s.fps < 30 then
-            return {
-                money = e.lowfps_money + context.full_hand
-            }
-        end
+            local letters = s.clipboard:gsub("[^%a]", "")
+            mult = mult + #letters
 
-        
-
-        if context.press_play and context.key_press_f  then
-            print("aaaaaaaaaaaaaaa")
-            return {
+            if G.YOUAREANIDIOT.pressed_f then
                 chips = chips +
                     math.floor(G.GAME.dollars / 5) * e.f_chips
+
+                G.YOUAREANIDIOT.pressed_f = false
+            end
+
+            return {
+                mult = mult,
+                chips = chips,
+                dollars = money
             }
         end
 
-        --this is where the magic happens
         if context.end_of_round then
-            if s.volume < 10 then
+            if s.volume < 0.1 then
                 for _, j in ipairs(G.jokers.cards) do
                     j.ability.extra_value =
                         (j.ability.extra_value or 0) + e.volume_value
@@ -222,6 +213,7 @@ SMODS.Joker {
 
             if s.session >= e.session_min * 60 then
                 local c = pseudorandom_element(G.consumeables.cards)
+
                 if c then
                     local copy = copy_card(c)
                     copy:set_edition({ negative = true })
@@ -251,7 +243,7 @@ SMODS.Joker {
                 and s.june
                 and s.four_pm
                 and s.fps < 30
-                and s.volume < 10
+                and s.volume < 0.1
                 and s.battery >= e.batt_min
                 and s.battery <= e.batt_max then
                 local cur = G.GAME.dollars
@@ -261,10 +253,15 @@ SMODS.Joker {
                     + cur * (e.money_mult - 1)
 
                 return {
+
                     dollars = cur * (e.money_mult - 1),
-                    message = "how",
+
+                    message = "SYSTEM SYNC",
+
                     colour = G.C.MONEY,
+
                     message_card = card,
+
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
