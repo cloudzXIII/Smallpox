@@ -37,12 +37,15 @@ return {
                 }
             },
             j_smallpox_rhythm = {
-                name = 'Amp Up!',
+                name = {
+                        'Amp Up!',
+                        '{s:0.5}created by {s:0.5,V:1}M0xes{}',
+                },
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
-					"per {C:attention}consective{} hand played",
-					'when "{C:attention}JOKER!{}" is lit',
-					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+                    "per {C:attention}consective{} hand played",
+                    'when "{C:chips}Joker!{}" is lit',
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 },
             },
         }
