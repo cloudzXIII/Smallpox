@@ -19,6 +19,14 @@ SMODS.Joker {
         return { vars = { card.ability.extra.s_chips, localize(card.ability.extra.suit, 'suits_singular'), card.ability.extra.s_chips * card.ability.extra.s_count, card.ability.extra.s_count, colours = {G.C.SUITS.Spades} },  }
     end,
 	pronouns = 'they_them',
+		add_to_deck = function(self,card,from_debuff)
+    	card.ability.extra.s_count = 0
+		for i = 1, #G.deck.cards do
+			if G.deck.cards[i] and G.deck.cards[i].base.suit == card.ability.extra.suit then
+				card.ability.extra.s_count = card.ability.extra.s_count + 1
+			end
+		end
+    end,
     calculate = function(self, card, context)
 		if context.hand_drawn then
 			card.ability.extra.s_count = 0
