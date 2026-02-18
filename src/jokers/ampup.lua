@@ -11,19 +11,22 @@ SMODS.Joker {
 	atlas = 'Amp_Up',
 	pos = { x = 0, y = 0 },
 	cost = 5,
-	config = { extra = { chip_mod = 12, chips = 0, frames = 8, fps = 8 } },
+	config = { extra = { chip_mod = 12, chips = 0 } },
 	pools = {["Smallpox"] = true},
-	pronouns = "it_its", 
+	pronouns = "it_its",
+
+	frames = 8,
+	fps = 6,
 	loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chip_mod, card.ability.extra.chips, colours = { HEX('9d39c4') } }}
     end,
 	update = function(self, card, dt)
-		card.children.center:set_sprite_pos({x = math.floor((os.clock() * card.ability.extra.fps) % card.ability.extra.frames), y = 0})
+		card.children.center:set_sprite_pos({x = math.floor((os.clock() * self.fps) % self.frames), y = 0})
 	end,
     calculate = function(self, card, context)
         if context.press_play and
 		not context.blueprint then
-			local current_frame = math.floor((os.clock() * card.ability.extra.fps) % card.ability.extra.frames)
+			local current_frame = math.floor((os.clock() * self.fps) % self.frames)
 			print("Amp Up Frame - " .. current_frame)
 			if current_frame >= 5 then
 
