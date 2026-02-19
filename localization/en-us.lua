@@ -1,4 +1,9 @@
 return {
+    misc = {
+        dictionary = {
+            k_smallpox_rhythm_miss = "Missed." 
+        },
+    },
     descriptions = {
         Back = {
             b_smallpox_showman = {
@@ -977,6 +982,19 @@ return {
                     
                 }
             },
+            j_smallpox_rhythm = {
+                name = {
+                        'Amp Up!',
+                        '{s:0.5}created by {s:0.5,V:1}M0xes{}',
+                },
+                text = {
+                    "This Joker gains {C:chips}+#1#{} Chips",
+                    "per {C:attention}consective{} hand played",
+                    'when "{C:chips}Joker!{}" is lit',
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+                },
+            },
+            
         },
         --not actually an edition, used on tags
         Edition = {
