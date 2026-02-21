@@ -14,7 +14,7 @@ SMODS.Joker {
     blueprint_compat = true,
     pools = {["Smallpox"] = true},
     cost = 7,
-    config = { extra = { s_chips = 2, suit = 'Spades', s_count = 0}, },
+    config = { extra = { s_chips = 4, suit = 'Spades', s_count = 0}, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.s_chips, localize(card.ability.extra.suit, 'suits_singular'), card.ability.extra.s_chips * card.ability.extra.s_count, card.ability.extra.s_count, colours = {G.C.SUITS.Spades} },  }
     end,
