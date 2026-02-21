@@ -50,19 +50,19 @@ assert(SMODS.load_file("./src/pack.lua"))() -- CONFIG MENU
 
 
 ---COMMON
+assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker our chud son
 assert(SMODS.load_file("./src/jokers/agency.lua"))() -- Agency, The by Myst, a: Inky
 assert(SMODS.load_file("./src/jokers/ampup.lua"))() -- Amp Up by M0x3s
+assert(SMODS.load_file("./src/jokers/astro.lua"))() -- Astro by Astro, p: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/bliss.lua"))() -- Bliss by LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/lexi_fire_alarm.lua"))() -- Fire Alarm by Lexi
 assert(SMODS.load_file("./src/jokers/iwillnever.lua"))() -- I will never... by Edward Robinson, p: LasagnaFelidae
-assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker our chud son
 assert(SMODS.load_file("./src/jokers/ren_metaldetector.lua"))() -- Metal Detector by Ren
 assert(SMODS.load_file("./src/jokers/GhostSalt.lua"))() -- No Littering by GhostSalt
 assert(SMODS.load_file("./src/jokers/os.JOKER.lua"))() -- os.JOKER by Nxkoo, a: Typ0
 assert(SMODS.load_file("./src/jokers/theriantropy.lua"))() -- Theriantropy by Jewel
 ---UNCOMMON
 assert(SMODS.load_file("./src/jokers/antique_chair.lua"))() -- Antique Chair by cloudzXIII
-assert(SMODS.load_file("./src/jokers/astro.lua"))() -- Astro by Astro, p: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/Atlas.lua"))() -- Atlas by ABuffZucchini
 assert(SMODS.load_file("./src/jokers/typ0.lua"))() -- Blackjack by Typ0
 assert(SMODS.load_file("./src/jokers/factoryline.lua"))() -- Factory Line by Lily Felli
