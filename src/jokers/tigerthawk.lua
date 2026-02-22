@@ -84,7 +84,7 @@ SMODS.Joker {
                 "By: TigerTHawk",
                 "Code: SLDTyp0",
             },
-            color = HEX("000000"),
+            color = HEX("F399FF"),
 		},
 	},
 }

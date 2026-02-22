@@ -60,7 +60,7 @@ SMODS.Joker {
                 "By: MetaNite64",
                 "Art: Plasma"
             },
-            color = HEX('000000')
+            color = HEX("F399FF"),
 		},
 	},
 }

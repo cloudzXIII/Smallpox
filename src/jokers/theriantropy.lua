@@ -53,8 +53,9 @@ SMODS.Joker {
     end,
     smallpox_credits = {
 		{
-			text = "By: Jewel"
+			text = "By: Jewel",
+            color = HEX("F399FF"),
 		},
-        color = HEX("000000"), --Please make this smallpox_pink
+        
 	},
 }
