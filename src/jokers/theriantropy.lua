@@ -16,15 +16,15 @@ SMODS.Joker {
     discovered = false,
     unlocked = true,
     pronouns = "she_they", 
-    config = {extra = {chance = 2, chance2 = 15, edition = 'm_wild'}},
+    config = {extra = {odds = 2, odds2 = 15, edition = 'm_wild'}},
 	loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        local a, b = SMODS.get_probability_vars(card, 1, card.ability.extra.chance)
-        local ab, c = SMODS.get_probability_vars(card, 1, card.ability.extra.chance2)
-        return {vars = {a, b, ab, c, card.ability.extra.edition}}
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'smallpox_therian')
+        local numerator2, denominator2 = SMODS.get_probability_vars(card, 1, card.ability.extra.odds2, 'smallpox_therian')
+        return {vars = {numerator, denominator, numerator2, denominator2, card.ability.extra.edition}}
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'smallpox_therian', a, b) and not context.blueprint then
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'smallpox_stherian', 1, card.ability.extra.odds) and not context.blueprint then
             local scored_card = context.other_card
             G.E_MANAGER:add_event(Event({
                 func = function()                
@@ -35,7 +35,7 @@ SMODS.Joker {
             SMODS.calculate_effect({ message = "Run wild", colour = G.C.BLUE},
             context.blueprint_card or card)
         end
-        if context.individual and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'smallpox_therian', ab , c) and not context.blueprint then
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'smallpox_therian', 1, card.ability.extra.odds2) and not context.blueprint then
             card.getting_sliced = true
 			if #G.consumeables.cards < G.consumeables.config.card_limit then
 				SMODS.add_card({ set = 'Spectral', key = 'c_cryptid'})
