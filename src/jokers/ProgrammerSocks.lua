@@ -22,6 +22,11 @@ SMODS.Joker {
         extra = { 
             scale = 0.1,
             xmult = 1.5,
+            populationFactor = 450,
+            steps = 0,
+            -- change the next two for rebalancing
+            popFactorMin = 250,
+            popFactorMax = 550
         },
     },
     pronouns = "any_all", -- see comment at top
@@ -29,16 +34,35 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.scale, card.ability.extra.xmult } }
     end,
-    
     calculate = function(self, card, context)
-        if context.joker_main == true then
-            local socks = pseudorandom("socks"..G.GAME.round..G.GAME.pseudorandom.seed, 0, 4)
-              if socks == 0 then
-                  card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.scale
-              end
-            return {
-            xmult = card.ability.extra.xmult
-            }
+        local ret = {}
+        if not context.repetition then
+            if G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 0 then
+			    card.ability.extra.steps = card.ability.extra.steps + 1
+		    end
+            
+            if card.ability.extra.steps > card.ability.extra.populationFactor then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.scale
+                ret.extra = {}
+                ret.extra.message = localize("smallpox_sockscale"..pseudorandom("word",1,3))..G.PROFILES[G.SETTINGS.profile].name
+                ret.extra.message_card = card
+                card.ability.extra.steps, card.ability.extra.populationFactor = 0, pseudorandom("populationFactor",card.ability.extra.popFactorMin,card.ability.extra.popFactorMax)
+                print("Socks Population Factor - " .. card.ability.extra.populationFactor)
+            end
+        end
+
+        if context.joker_main then
+            ret.xmult = card.ability.extra.xmult
+        end
+
+        if ret then 
+            SMODS.calculate_effect(ret, card)
         end
     end,
+    smallpox_credits = {
+		{
+			text = "By: ProdByProto",
+            color = G.C.RARITY[4]
+		},
+	},
 }

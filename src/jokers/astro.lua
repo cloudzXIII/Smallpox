@@ -10,23 +10,39 @@ SMODS.Joker {
     key = "smallpox_astro",
     atlas = "astro",
     pos = { x = 0 , y = 0 },
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     pools = {["Smallpox"] = true},
     cost = 7,
-    config = { extra = { s_chips = 10, suit = 'Spades', s_count = 0}, },
+    config = { extra = { s_chips = 4, suit = 'Spades', s_count = 0}, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.s_chips, localize(card.ability.extra.suit, 'suits_singular'), card.ability.extra.s_chips * card.ability.extra.s_count, card.ability.extra.s_count, colours = {G.C.SUITS.Spades} },  }
     end,
 	pronouns = 'they_them',
-		add_to_deck = function(self,card,from_debuff)
-    	card.ability.extra.s_count = 0
-		for i = 1, #G.deck.cards do
-			if G.deck.cards[i] and G.deck.cards[i].base.suit == card.ability.extra.suit then
-				card.ability.extra.s_count = card.ability.extra.s_count + 1
+	
+	add_to_deck = function(self, card, from_debuff)
+		card.ability.extra.s_count = 0
+		if G.deck then 
+			for i = 1, #G.deck.cards do
+				if G.deck.cards[i] and G.deck.cards[i].base.suit == card.ability.extra.suit then
+					card.ability.extra.s_count = card.ability.extra.s_count + 1
+				end
 			end
 		end
-    end,
+		
+	end,
+	
+	set_ability = function(self, card, initial, delay_sprites)
+		card.ability.extra.s_count = 0
+		if G.deck then 
+			for i = 1, #G.deck.cards do
+				if G.deck.cards[i] and G.deck.cards[i].base.suit == card.ability.extra.suit then
+					card.ability.extra.s_count = card.ability.extra.s_count + 1
+				end
+			end
+		end
+	end,
+	
     calculate = function(self, card, context)
 		if context.hand_drawn then
 			card.ability.extra.s_count = 0
@@ -41,5 +57,14 @@ SMODS.Joker {
                 chips = card.ability.extra.s_chips * card.ability.extra.s_count
             }
         end
-    end
+    end,
+	smallpox_credits = {
+		{
+			text = {
+				"By: Astro",
+				"Code: LasagnaFelidae"
+			},
+			color = G.C.BLUE
+		},
+	},
 }

@@ -8,6 +8,16 @@ SMODS.Atlas({
     atlas_table = "ASSET_ATLAS"
 })
 
+loc_colour()
+G.ARGS.LOC_COLOURS.fire = SMODS.Gradient{
+    key = "fire",
+    colours = {
+        HEX("ff7300"),
+        HEX("ffd900"),
+    },
+    cycle = 1
+}
+
 SMODS.Joker {
     key = "missingnumber",
     atlas = 'missingnumber',
@@ -83,6 +93,15 @@ SMODS.Joker {
                 xchips = card.ability.extra.mult
             }
         end
-    end
+    end,
+    smallpox_credits = {
+		{
+			text = {
+                "By: missingnumber",
+                "Code: SLDTyp0"
+            },
+            color = G.ARGS.LOC_COLOURS.fire,
+		},
+	},
 
 }

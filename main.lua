@@ -50,19 +50,19 @@ assert(SMODS.load_file("./src/pack.lua"))() -- CONFIG MENU
 
 
 ---COMMON
+assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker our chud son
 assert(SMODS.load_file("./src/jokers/agency.lua"))() -- Agency, The by Myst, a: Inky
 assert(SMODS.load_file("./src/jokers/ampup.lua"))() -- Amp Up by M0x3s
+assert(SMODS.load_file("./src/jokers/astro.lua"))() -- Astro by Astro, p: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/bliss.lua"))() -- Bliss by LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/lexi_fire_alarm.lua"))() -- Fire Alarm by Lexi
 assert(SMODS.load_file("./src/jokers/iwillnever.lua"))() -- I will never... by Edward Robinson, p: LasagnaFelidae
-assert(SMODS.load_file("./src/jokers/example.lua"))() -- The example joker our chud son
 assert(SMODS.load_file("./src/jokers/ren_metaldetector.lua"))() -- Metal Detector by Ren
 assert(SMODS.load_file("./src/jokers/GhostSalt.lua"))() -- No Littering by GhostSalt
 assert(SMODS.load_file("./src/jokers/os.JOKER.lua"))() -- os.JOKER by Nxkoo, a: Typ0
 assert(SMODS.load_file("./src/jokers/theriantropy.lua"))() -- Theriantropy by Jewel
 ---UNCOMMON
 assert(SMODS.load_file("./src/jokers/antique_chair.lua"))() -- Antique Chair by cloudzXIII
-assert(SMODS.load_file("./src/jokers/astro.lua"))() -- Astro by Astro, p: LasagnaFelidae
 assert(SMODS.load_file("./src/jokers/Atlas.lua"))() -- Atlas by ABuffZucchini
 assert(SMODS.load_file("./src/jokers/typ0.lua"))() -- Blackjack by Typ0
 assert(SMODS.load_file("./src/jokers/factoryline.lua"))() -- Factory Line by Lily Felli
@@ -218,3 +218,53 @@ end
 SMODS.current_mod.optional_features = { --I DON'T KNOW IF THIS IS ALLOWED
     retrigger_joker = true
 }
+
+
+
+local smcmb = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+	smcmb(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.smallpox_credits then
+        --Taken from HotPot
+        local function calc_scale_fac(text)
+			local size = 0.9
+			local font = G.LANG.font
+			local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+			local calced_text_width = 0
+			-- Math reproduced from DynaText:update_text
+			for _, c in utf8.chars(text) do
+				local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
+					+ 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+				calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+			end
+			local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+			return scale_fac
+		end
+        --
+
+        inital_badge_amount = #badges
+        for i, credit in ipairs(obj.smallpox_credits) do
+            if not credit.text then
+                credit.text = "ERROR"
+            end
+            if not credit.color then
+                credit.color = G.C.BLACK
+            end
+            if not credit.text_color then
+                credit.text_color = G.C.WHITE
+            end
+            if not credit.size then
+                local size = 1000
+                if type(credit.text) == "table" then
+                     for _, text in ipairs(credit.text) do
+                        size = math.min(size, calc_scale_fac(text))
+                     end
+                else
+                    size = calc_scale_fac(credit.text)
+                end
+                credit.size = math.max(size, 0.8)
+            end
+            badges[inital_badge_amount + i] = create_badge(credit.text, credit.color, credit.text_color, credit.size)
+        end
+    end
+end

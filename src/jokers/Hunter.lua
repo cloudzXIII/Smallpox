@@ -42,4 +42,13 @@ SMODS.Joker {
             }
         end
     end,
+    smallpox_credits = {
+		{
+			text = {
+                "By: Hunter",
+                "Code: SLDTyp0"
+            },
+			color = G.C.SECONDARY_SET.Planet
+		},
+	},
 }

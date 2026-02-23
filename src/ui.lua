@@ -116,7 +116,7 @@ local function button_ui(card)
                 {
                   n = G.UIT.T,
                   config = {
-                    text = "USE",
+                    text = localize("k_smallpox_breuhhh_use"),
                     colour = G.C.UI.TEXT_LIGHT, -- color of the button text
                     scale = 0.4,
                   }
@@ -154,13 +154,16 @@ G.FUNCS.smallpox_breuhh_click = function(e)
             return true
         end
     }))
+    for _, copy in ipairs(SMODS.find_card("j_smallpox_functions")) do
+        copy.ability.current_operator = operator
+    end
     card.ability.been_used = true
     card_eval_status_text(card, 'extra', nil, nil, nil, {message = operator.name.."!", colour = operator.colour})
 end
 
 G.FUNCS.smallpox_breuhh_func = function(e)
   local card = e.config.ref_table
-  local can_use = not card.ability.been_used
+  local can_use = not card.ability.been_used and not card.debuff
 
   e.config.button = can_use and 'smallpox_breuhh_click' or nil
   e.config.colour = can_use and G.C.MULT or G.C.UI.BACKGROUND_INACTIVE
@@ -220,16 +223,6 @@ if SMODS.DynaTextEffect then
 			end
 		}
 end
-
-SMODS.Gradient{
-    key = "fire",
-    colours = {
-        HEX("ff7300"),
-        HEX("ffd900"),
-    },
-    cycle = 1
-}
-
 
 function G.FUNCS.close_popup()
     G.FUNCS.exit_overlay_menu()

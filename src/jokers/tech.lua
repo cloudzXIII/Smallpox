@@ -6,8 +6,19 @@ SMODS.Atlas({
     atlas_table = "ASSET_ATLAS"
 })
 
+loc_colour()
+G.ARGS.LOC_COLOURS.rainbow_badge = SMODS.Gradient {
+	key = "rainbow_badge",
+	update = function(self, dt)
+        local rgb = SPOX.hsl2rgb(math.fmod((G.TIMERS.REAL) * 50, 360), 1, 0.75, 1)
+		for i, color in ipairs(rgb) do
+			self[i] = color
+		end
+	end
+}
+
 SMODS.Joker {
-    key = "poxofthewild",
+        key = "poxofthewild",
     blueprint_compat = true,
     rarity = 4,
     cost = 8,
@@ -28,7 +39,6 @@ SMODS.Joker {
 			lxmult = 3,
 			pmult = 0.5,
 			rlr=1, 
-			tmult = 0, 
 			retriggers = 0
 		} 
 	},
@@ -57,33 +67,34 @@ SMODS.Joker {
 		}
     end,
      calculate = function(self, card, context)
-        if context.other_joker and context.other_joker.config.center.pools and context.other_joker.config.center.pools['Smallpox'] then
-			if (context.other_joker.config.center.rarity == 1 or context.other_joker.config.center.rarity == "Common") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.cxmult
-
+        if context.joker_main then
+			local tmult = 0
+			local retriggers = 0
+			for _, j in ipairs(G.jokers.cards) do
+				if j ~= card and j.config.center.pools and j.config.center.pools['Smallpox'] then
+					local r = j.config.center.rarity
+					local p = j.config.center.pools
+					if r == 1 or r == "Common" then 
+					tmult = tmult + card.ability.extra.cxmult 
+					end
+					if r == 2 or r == "Uncommon" then 
+					tmult = tmult + card.ability.extra.uxmult 
+					end
+					if r == 3 or r == "Rare" then 
+						tmult = tmult + card.ability.extra.rxmult 
+						retriggers = retriggers + card.ability.extra.rlr 
+					end
+					if r == 4 or r == "Legendary" then 
+						tmult = tmult + card.ability.extra.lxmult 
+						retriggers = retriggers + card.ability.extra.rlr 
+					end
+					if p['Meme'] or p['Disease'] then
+						tmult = tmult + card.ability.extra.pmult
+					end
+				end
 			end
-			if (context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.uxmult
-			end
-			if (context.other_joker.config.center.rarity == 3 or context.other_joker.config.center.rarity == "Rare") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.rxmult
-				card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
-			end
-			if ((context.other_joker.config.center.rarity == 4 or context.other_joker.config.center.rarity == "Legendary") and context.other_joker ~= card) then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.lxmult
-				card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
-			end
-			if ((context.other_joker.config.center.pools['Meme'] or context.other_joker.config.center.pools['Disease']) and context.other_joker ~= card) then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.pmult
-			end
-        end
-
-		if context.joker_main then
-			return{
-				xmult = card.ability.extra.tmult,
-				sound = "smallpox_poxofthewild_pop",
-				pitch = 1,
-			}
+			card.ability.extra.retriggers = retriggers
+			return { xmult = math.max(1,tmult), sound = "smallpox_poxofthewild_pop", pitch = 1 }
 		end
 
 		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card == card then
@@ -92,9 +103,15 @@ SMODS.Joker {
 				sound = "smallpox_poxofthewild_pop",
 			}
 		end
-		if context.final_scoring_step then
-			card.ability.extra.tmult = 0
-			card.ability.extra.retriggers = 0
-		end
     end,
+    smallpox_credits = {
+		{
+			text = {
+                "By: Tech",
+                "Code: LasagnaFelidae",
+				"Art: Plasma"
+            },
+            color = G.ARGS.LOC_COLOURS.rainbow_badge,
+		},
+	},
 }

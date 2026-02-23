@@ -181,9 +181,19 @@ SMODS.Joker {
             if s.fps < 30 then
                 money = money + (e.lowfps_money * context.full_hand_size)
             end
-
-            local letters = s.clipboard:gsub("[^%a]", "")
-            mult = mult + #letters
+            
+            local letters = {}
+            local count = 0
+            local result = s.clipboard:gsub(".", function(char)
+                local val = string.byte(char)
+                if val < 128 and not letters[val] then 
+                    letters[val] = true 
+                    count = count + 1
+                    return char
+                end
+                return "" 
+            end)
+            mult = mult + count
 
             if G.YOUAREANIDIOT.pressed_f then
                 chips = chips +
@@ -273,5 +283,14 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    smallpox_credits = {
+		{
+			text = {
+                "By: Nxkoo",
+                "Art: Typ0"
+            },
+            color = G.C.SUITS.Hearts,
+		},
+	},
 }

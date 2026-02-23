@@ -15,24 +15,24 @@ SMODS.Joker {
     discovered = true,
     config = {
         operators = {
-            {key = "mul", name = "multiplication", colour = G.C.RED},
-            {key = "add", name = "addition", colour = G.C.BLUE},
-            {key = "div", name = "division", colour = G.C.PURPLE},
-            {key = "sub", name = "subtraction", colour = G.C.FILTER},
-            {key = "mod", name = "modulo", colour = G.C.GREEN},
-            {key = "avg", name = "average", colour = G.C.GREEN},
-            {key = "con", name = "concatenation", colour = G.C.BLUE},
-            {key = "min", name = "minimum", colour = G.C.FILTER},
-            {key = "max", name = "maximum", colour = G.C.FILTER},
-            {key = "com", name = "complement", colour = G.C.RED},
-            {key = "pow", name = "exponentiation", colour = G.C.GREEN},
-            {key = "fac", name = "factorial", colour = G.C.PURPLE},
-            {key = "bal", name = "balance", colour = G.C.BLUE},
-            {key = "lsh", name = "leftshift", colour = G.C.RED},
-            {key = "hye", name = "hyper-e", colour = G.C.GREEN},
-            {key = "ran", name = "random", colour = G.C.FILTER}
+            {key = "mul", colour = G.C.RED},
+            {key = "add", colour = G.C.BLUE},
+            {key = "div", colour = G.C.PURPLE},
+            {key = "sub", colour = G.C.FILTER},
+            {key = "mod", colour = G.C.GREEN},
+            {key = "avg", colour = G.C.GREEN},
+            {key = "con", colour = G.C.BLUE},
+            {key = "min", colour = G.C.FILTER},
+            {key = "max", colour = G.C.FILTER},
+            {key = "com", colour = G.C.RED},
+            {key = "pow", colour = G.C.GREEN},
+            {key = "fac", colour = G.C.PURPLE},
+            {key = "bal", colour = G.C.BLUE},
+            {key = "lsh", colour = G.C.RED},
+            {key = "hye", colour = G.C.GREEN},
+            {key = "ran", colour = G.C.FILTER}
         },
-        current_operator = {name = "none", colour = G.C.UI.TEXT_INACTIVE},
+        current_operator = {key = "non", colour = G.C.UI.TEXT_INACTIVE},
         been_used = false
     },
     pools = {["Smallpox"] = true, ["Math"] = true},
@@ -40,34 +40,92 @@ SMODS.Joker {
 
     loc_vars = function(self,ifq,card)
         return {
-            vars = {card.ability.current_operator.name, colours = {card.ability.current_operator.colour}}
+            vars = {localize("k_smallpox_"..card.ability.current_operator.key), colours = {card.ability.current_operator.colour}}
         }
     end,
-    
-    calculate = function(self, card, context)
-        if context.after and not context.blueprint then
-            card.ability.current_operator = card.ability.operators[math.ceil((pseudorandom("function")*#card.ability.operators + 1) % #card.ability.operators)]
-            local operator = card.ability.current_operator
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                func = function()
-                    SMODS.set_scoring_calculation("smallpox_breuhh_"..operator.key)
+    load = function(self, card, card_table, other_card)
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            func = function()
+                local operator = card.ability.current_operator
+                if operator.key == "non" then
                     return true
                 end
-            }))
-            return {
-                message = operator.name.."!",
-                colour = operator.colour
-            }
+                SMODS.set_scoring_calculation("smallpox_breuhh_"..operator.key)
+                return true
+            end
+         }))
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        for _, functions in ipairs(SMODS.find_card("j_smallpox_functions")) do
+            if not functions.debuff and functions ~= card then
+                card.ability.current_operator = functions.ability.current_operator
+                break
+            end
+        end
+        
+        local operator = card.ability.current_operator
+        if operator.key == "non" then
+            return nil
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            func = function()
+                SMODS.set_scoring_calculation("smallpox_breuhh_"..operator.key)
+                return true
+            end
+         }))
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        for _, functions in ipairs(SMODS.find_card("j_smallpox_functions")) do
+            if not functions.debuff and functions ~= card then
+                return nil
+            end
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            func = function()
+                SMODS.set_scoring_calculation("multiply")
+                return true
+            end
+        }))
+        
+    end,
+    calculate = function(self, card, context)
+        if context.after and not context.blueprint then
+            local operator = nil
+            local first_function = SMODS.find_card("j_smallpox_functions")[1]
+            if first_function == card then
+                card.ability.current_operator = card.ability.operators[math.ceil((pseudorandom("function")*#card.ability.operators + 1) % #card.ability.operators)]
+                operator = card.ability.current_operator
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    func = function()
+                        SMODS.set_scoring_calculation("smallpox_breuhh_"..operator.key)
+                        return true
+                    end
+                }))
+                return {
+                    message = localize("k_smallpox_"..card.ability.current_operator.key).."!",
+                    colour = operator.colour
+                }
+            else
+                card.ability.current_operator = first_function.ability.current_operator
+            end
         end
 
         if context.setting_blind then 
             if card.ability.been_used then 
                 card.ability.been_used = false 
-                return {message = "use active!", colour = G.C.RED} 
+                return {message = localize("k_smallpox_breuhhh_useactive").."!", colour = G.C.RED} 
             end 
         end
-    end
+    end,
+    smallpox_credits = {
+		{
+			text = "By: Breuuh"
+		},
+	},
 }
 
 
@@ -129,7 +187,7 @@ SMODS.Scoring_Calculation {
 SMODS.Scoring_Calculation {
     key = "breuhh_con",
     func = function(self,chips,mult,flames)
-        return chips*10^math.ceil(math.log(mult,10)) + mult
+        return chips*10^math.floor(math.log(mult,10) + 1) + mult
     end,
     text = "",
     colour = G.C.BLUE

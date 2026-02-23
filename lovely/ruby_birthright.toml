@@ -283,6 +283,7 @@ if SPOX.get_selected_deck() == "b_ghost" and next(SMODS.find_card("j_smallpox_bi
       math.min(G.GAME.shop.joker_max*1.02*G.CARD_W,4.08*G.CARD_W) * 0.25,
       1.05*G.CARD_H, 
       {card_limit = G.GAME.shop.joker_max, type = 'shop', highlight_limit = 1, negative_info = true})
+	G.shop_spectral.cards = G.shop_spectral.cards or {}
 else
     G.shop_jokers = CardArea(
       G.hand.T.x+0,
@@ -337,7 +338,7 @@ end
 position = 'after'
 match_indent = true
 payload = '''
-if G.shop_spectral then
+if G.shop_spectral and G.shop_spectral.cards then
     for i = #G.shop_spectral.cards,1, -1 do
         local c = G.shop_spectral:remove_card(G.shop_spectral.cards[i])
         c:remove()
@@ -360,8 +361,12 @@ if G.load_shop_jokers then
 position = 'before'
 match_indent = true
 payload = '''
+if G.shop_spectral and not next(SMODS.find_card("j_smallpox_birthright")) then
+    G.shop_spectral:remove()
+    G.shop_spectral = nil
+end
 if G.shop_spectral then
-    if G.load_shop_spectral then 
+    if G.load_shop_spectral and G.shop_spectral.cards then 
         nosave_shop = true
         G.shop_spectral:load(G.load_shop_spectral)
         for k, v in ipairs(G.shop_spectral.cards) do

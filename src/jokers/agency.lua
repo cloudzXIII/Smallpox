@@ -72,14 +72,28 @@ SMODS.Joker {
                     return true
                     end
                 }))
-            else
-                card.ability.extra.threes = SMODS.find_card("j_smallpox_agency")[1].threes
             end
         end
+
         if context.joker_main then
+            card.ability.extra.threes = SMODS.find_card("j_smallpox_agency")[1].ability.extra.threes
+            local threes = card.ability.extra.threes
             return {
-                mult = card.ability.extra.mult * card.ability.extra.threes
+                mult = card.ability.extra.mult * threes
             }
         end
-    end
+
+        if context.after then
+            card.ability.extra.threes = 0
+        end
+    end,
+    smallpox_credits = {
+		{
+			text = {
+                "By: Mysthaps",
+                "Art: Inky",
+            },
+			color = G.C.RED
+		},
+	},
 }

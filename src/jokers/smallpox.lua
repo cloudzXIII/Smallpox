@@ -14,7 +14,7 @@ SMODS.Joker {
     rarity = 3,
     blueprint_compat = true,
     cost = 2,
-    discovered = true,
+    discovered = false,
     config = { extra = { xmult = 1.5, odds = 4 }, },
     pools = {["Smallpox"] = true},
     atlas = 'smallpox',
@@ -29,13 +29,11 @@ SMODS.Joker {
         --Slicing
             local destructable_jokers = {}
             for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] ~= card and not SMODS.is_eternal(G.jokers.cards[i], card) and G.jokers.cards[i].config.center.key ~= 'j_smallpox_smallpox' and not G.jokers.cards[i].getting_sliced then
+                if G.jokers.cards[i] ~= card and not SMODS.is_eternal(G.jokers.cards[i], card) and G.jokers.cards[i].config.center.key ~= 'j_smallpox_smallpox' and G.jokers.cards[i].config.center.key ~= 'j_smallpox_poxofthewild'  and not G.jokers.cards[i].getting_sliced then
                     destructable_jokers[#destructable_jokers + 1] =
                         G.jokers.cards[i]
                 end
             end
-            local joker_to_destroy = pseudorandom_element(destructable_jokers, 'smallpox_smallpox')
-
         if joker_to_destroy then
             joker_to_destroy.getting_sliced = true
                 return {
@@ -65,7 +63,13 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult
             }
         end
-    end
+    end,
+    smallpox_credits = {
+		{
+			text = "By: Plasma",
+            color = G.C.BLUE,
+		},
+	},
 }
 
 
