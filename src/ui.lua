@@ -221,16 +221,6 @@ if SMODS.DynaTextEffect then
 		}
 end
 
-SMODS.Gradient{
-    key = "fire",
-    colours = {
-        HEX("ff7300"),
-        HEX("ffd900"),
-    },
-    cycle = 1
-}
-
-
 function G.FUNCS.close_popup()
     G.FUNCS.exit_overlay_menu()
 end
