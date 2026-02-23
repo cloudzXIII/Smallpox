@@ -44,7 +44,7 @@ assert(SMODS.load_file("./src/backs.lua"))() -- DECKS
 assert(SMODS.load_file("./src/pools.lua"))() -- JOKER POOLS
 assert(SMODS.load_file("./src/sounds.lua"))() -- SOUNDS
 assert(SMODS.load_file("./src/config_menu.lua"))() -- CONFIG MENU
-assert(SMODS.load_file("./src/pack.lua"))() -- CONFIG MENU
+assert(SMODS.load_file("./src/boosters.lua"))() -- BOOSTERS
 --assert(SMODS.load_file("./src/atlasses.lua"))() -- ATLASSES
 
 
