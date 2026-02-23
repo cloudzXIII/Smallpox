@@ -134,7 +134,7 @@ SMODS.Scoring_Calculation {
 SMODS.Scoring_Calculation {
     key = "breuhh_con",
     func = function(self,chips,mult,flames)
-        return chips*10^math.ceil(math.log(mult,10)) + mult
+        return chips*10^math.floor(math.log(mult,10) + 1) + mult
     end,
     text = "",
     colour = G.C.BLUE
