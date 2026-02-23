@@ -262,7 +262,7 @@ function SMODS.create_mod_badges(obj, badges)
                 else
                     size = calc_scale_fac(credit.text)
                 end
-                credit.size = math.max(size, 0.6)
+                credit.size = math.max(size, 0.8)
             end
             badges[inital_badge_amount + i] = create_badge(credit.text, credit.color, credit.text_color, credit.size)
         end
