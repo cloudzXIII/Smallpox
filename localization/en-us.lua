@@ -26,7 +26,6 @@ return {
             j_smallpox_factory_line = {
                 name = {
                     "Factory Line",
-                    "{s:0.5}created by {C:lily_pink,s:0.5}Lily Felli{}{}",
                 },
                 text = {
                     {
@@ -44,7 +43,6 @@ return {
             j_smallpox_tjetsu_sumi = {
                 name = {
                     "Sumi",
-                    "{s:0.5}created by {C:tarot,s:0.5}Tje.Tsu{}{}",
                 },
                 text = {
                     {"Scored {C:hearts}Hearts{} give",
@@ -58,9 +56,7 @@ return {
             },
             j_smallpox_iwillnever = {
                     name = {
-                        "I Will never use JokerForge to make mods again",
-                        "{s:0.5}created by {V:1,s:0.5}Edward Robinson{}{}",
-                        "{s:0.5}programmed by {s:0.5,C:edition}LasagnaFelidae{}{}"  
+                        "I Will never use JokerForge to make mods again", 
                         },
                     text = {
                         {
@@ -72,7 +68,6 @@ return {
             j_smallpox_eyejoker = {
                 name = {
                   'See Through The Joke',
-                   "{s:0.5}created by {C:tarot,s:0.5}flynnsaneFellow{}{}",
                 },
                 text = {
                     "{C:attention}+6{} hand size",
@@ -82,7 +77,6 @@ return {
                j_smallpox_zucchiniatlas = {
                 name = {
                   "Atlas", 
-                  "{s:0.5}created by {C:blue,s:0.5}ABuffZucchini{}{}",
                 },
                 text = {
                     "{X:mult,C:white}X#1#{} Mult",
@@ -96,7 +90,6 @@ return {
             j_smallpox_puzzlevision = {
                 name = {
                     "Puzzlevision",
-                    '{s:0.5}created by {s:0.5,C:blue}FireIce421{}',
                 },
                 text = {
                     {
@@ -116,8 +109,6 @@ return {
 			j_smallpox_missingnumber = {
                 name = {
                     "Stained Glass Window",
-                    '{s:0.5}created by {s:0.5,C:smallpox_fire}missingnumber{}',
-					"{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}",
                 },
                 text = {
                     "Played {C:hearts}Hearts{} cards become {C:attention}Glass{}",
@@ -128,7 +119,6 @@ return {
             j_smallpox_roomtemperaturecarrot = {
                 name = {
                     'Room Temperature Carrot',
-                    '{s:0.5}created by {s:0.5,C:gold}RainStar{}',
                 },
                 text = {
                     {
@@ -150,7 +140,6 @@ return {
             j_smallpox_nolittering = {
                 name = {
                       'No Littering',
-                      '{s:0.5}created by {s:0.5,C:white}GhostSalt{}{}',
                 },
                 text = {
                     "Gains {C:mult}+#1#{} Mult",
@@ -162,8 +151,6 @@ return {
             j_smallpox_settheory = {
                 name = {
                       "Set Theory",
-                      '{s:0.5}created by {s:0.5,C:dark_edition}IamArta{}',
-
                 },
                 text = {
                     "Played cards with a {C:attention}rank{} that",
@@ -174,8 +161,6 @@ return {
             j_smallpox_astro = {
                 name = {
                      "Astro",
-                     '{s:0.5}created by {s:0.5,C:blue}Astro{}',
-                     "{s:0.5}programmed by {s:0.5,C:edition}LasagnaFelidae{}{}"
                 },
                 text = { 
                     "{C:chips}+#1#{} Chips",
@@ -186,9 +171,7 @@ return {
             },
             j_smallpox_scales_of_justice = {
                 name = {
-                  "Scales of Justice", 
-                  "{s:0.5}created by {C:purple,s:0.5}Revo{}{}",
-                  "{s:0.5}art by {C:blue,s:0.5}Plasma{}{}"
+                  "Scales of Justice",
                 },
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if the {C:attention}sum{} of",
@@ -202,8 +185,6 @@ return {
             j_smallpox_sillyzteto = {
                 name = {
                       "Kasane Teto",
-                      "{s:0.5}created by {C:purple,s:0.5}Sillyz",
-                      "{s:0.5}art by {C:blue,s:0.5}Plasma, {C:edition,s:0.5}LasagnaFelidae{}{}{}"
                       },
                 text = {
                     "Gain {X:mult,C:white}X#1#{} Mult for every",
@@ -214,7 +195,6 @@ return {
             j_smallpox_functions = {
                 name = {
                     'Functions',
-                    '{s:0.5}created by Breuuh',
                 },
                 text = {
                    {
@@ -231,7 +211,6 @@ return {
             j_smallpox_smallpox = {
                 name = {
                     'Smallpox',
-                    '{s:0.5}created by {s:0.5,C:blue}Plasma{}{}',
                 },
                 text = {
                     "{X:mult,C:white} X#1# {} Mult",
@@ -242,9 +221,7 @@ return {
             },
             j_smallpox_agency = {
                 name = {
-                  "The Agency", 
-                  "{s:0.5}created by {C:red,s:0.5}Mysthaps{}{}",
-                  "{s:0.5}art by {s:0.5,C:green,E:1}Inky{}{}"
+                  "The Agency",
                 },
                 text = {
                     {
@@ -262,8 +239,7 @@ return {
 
              j_smallpox_thecoin = {
                 name = {
-                  "THE COIN", 
-                  "{s:0.5}created by {C:legendary,s:0.5}Lyre{}{}",
+                  "THE COIN",
                 },
                 text = {
                     "{C:attention}Flips{} a coin when you need it most."
@@ -272,8 +248,6 @@ return {
             j_smallpox_longsocks = {
                 name = {
                     "Programmer Socks",
-                    "{s:0.5}created by {C:legendary,s:0.5}ProdByProto{}{}",
-                    "{C:inactive,s:0.4}wear for optimal brain activity during coding"
                 },
                 text = {
                     "Gains {X:mult,C:white}X#1#{} Mult for",
@@ -284,8 +258,7 @@ return {
             },
             j_smallpox_fableofthemirrorbreaker = {
                 name = {
-                    "Fable of the Joke-Maker", 
-                    "{s:0.5}created by {V:1,s:0.5}notmario{}{}"
+                    "Fable of the Joke-Maker",
                 },
                 text = {
                     {
@@ -313,8 +286,7 @@ return {
             },
             j_smallpox_fableofthemirrorbreaker_back = {
                 name = {
-                    "Reflection of Jimbo", 
-                    "{s:0.5}created by {V:1,s:0.5}notmario{}{}"
+                    "Reflection of Jimbo",
                 },
                 text = {
                     "Retrigger the {C:attention}Joker",
@@ -324,7 +296,6 @@ return {
             j_smallpox_lexi_fire_alarm = {
                 name = {
                     "Fire Alarm",
-                    "{s:0.5}created by Lexi",
                 },
                 text = {
                     "This Joker gains",
@@ -335,8 +306,7 @@ return {
             },
             j_smallpox_ren_metaldetector = {
                 name = {
-                  "Metal Detector", 
-                  "{s:0.5}created by {C:blue,s:0.5}PokéRen{}{}",
+                  "Metal Detector",
                 },
                 text = {
                     "{E:1,C:attention}Drag{} this Joker around",
@@ -347,7 +317,6 @@ return {
             j_smallpox_rhythm = {
                 name = {
                         'Amp Up!',
-                        '{s:0.5}created by {s:0.5,V:1}M0xes{}',
                 },
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
@@ -359,7 +328,6 @@ return {
             j_smallpox_claus_dies = {
                 name = {
                       "PK Thunder",
-                       "{s:0.5}created by {C:blue,s:0.5}isotypical{}{}",
                 },
                 text = {
                     "{C:green}#1# in #4#{} chance to apply {X:red,C:white}X3{} Mult",
@@ -371,8 +339,6 @@ return {
             j_smallpox_osjoker = {
                 name = {
                     "os.J{E:smallpox_err}1{}OKER{E:smallpox_err}1{}()",
-                    "{s:0.5}created by {C:hearts,s:0.5}Nxkoo{}{}",
-                    "{s:0.5}art by {C:planet,s:0.5}Typ0{}{}"
                 },
                 text = {
                     {
@@ -399,7 +365,6 @@ return {
             j_smallpox_ins_oro = {
                 name = {
                     "Ouroboros",
-                    "{s:0.5}created by {C:blue,s:0.5}candycanearter",
                 },
                 text = {
                     "{X:mult,C:white}X#1#{} Mult",
@@ -411,7 +376,6 @@ return {
             j_smallpox_antique_chair = {
                 name = {
                     "Antique Chair",
-                    "{s:0.5}created by {C:gold,s:0.5}cloudzXIII{}{}",
                 },
                 text = {
                     "This Joker gains {C:white,X:mult}X#2#{} Mult",
@@ -424,7 +388,6 @@ return {
             j_smallpox_grinch = {
                 name = {
                     'The Grinch',
-                    '{s:0.5}created by {s:0.5,C:green}soulware{}{}',
                 },
                 text = {
                    {
@@ -442,7 +405,6 @@ return {
             j_smallpox_egbert = {
                 name = {
                     'John Egbert',
-                    '{s:0.5}created by {s:0.5,C:spectral}FirstTry{}{}',
                     },    
                 text = {
                     "Gain {X:chips,C:white}X#2#{} Chips when",
@@ -455,7 +417,6 @@ return {
             j_smallpox_mys_minty_vaccine = {
                 name = {
                     "Vaccine",
-                    "{s:0.5}created by {s:0.5,V:2}#2#{}"
                 },
                 text = {
                     "Debuffs {V:1}#1#{} Jokers",
@@ -465,7 +426,6 @@ return {
             j_smallpox_demon_core = {
                 name = {
                     "Demon Core",
-                    '{s:0.5}created by {s:0.5,V:1}ThunderEdge{}',
                 },
                 text = {
                     "When {C:attention}Blind{} is selected,",
@@ -479,7 +439,6 @@ return {
             j_smallpox_bliss = {
                 name = {
                     'Bliss',
-                    '{s:0.5}created by {s:0.5,C:edition}LasagnaFelidae{}',
                 },
                 text = { 
                     "Gains {C:chips}+#1#{} Chips ",
@@ -492,7 +451,6 @@ return {
             j_smallpox_blackjack = {
               name = {
                     "Blackjack",
-                    "{s:0.5}created by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}",
               },
               text = {
                     "If {C:attention}two{} cards are",
@@ -503,8 +461,6 @@ return {
             j_smallpox_Tatsu = {
                 name = {
                     "Butterfly Effect",
-                    "{s:0.5}created by {s:0.5,V:1,E:1}Tatsu{}{}",
-                    "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
                 text = {
                     "Sell this card to {C:attention}destroy{}",
@@ -517,8 +473,6 @@ return {
             j_smallpox_Inky = {
               name = {
                     "Restaurant Menu",
-                    "{s:0.5}created by {s:0.5,C:green,E:1}Inky{}{}",
-                    "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
               text = {
                     "Sell this Joker to create",
@@ -528,7 +482,6 @@ return {
             j_smallpox_miller = {
                 name = {
                     "VOIDWALKER",
-                    "{s:0.5}created by {V:1}AbelSketch{}",
                 },
                 text = {{
                     "Reduce blind",
@@ -553,8 +506,6 @@ return {
             j_smallpox_hunter = {
                 name = {
                     "Notebook Sketch",
-                    "{s:0.5}created by {s:0.5,C:planet,E:1}Hunter{}{}",
-                    "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
                 text = {
                     "Gain {X:mult,C:white}X0.1{} Mult per hand drawn",
@@ -566,9 +517,6 @@ return {
             j_smallpox_poxofthewild = {
                 name = {
                     'The Pox of The Wild',
-                    "{s:0.5}created by {s:0.5,C:spectral,E:smallpox_rainbow}Tech{}{}",
-                    "{s:0.5}programmed by {s:0.5,C:edition}LasagnaFelidae{}{}",
-					          "{s:0.5}art by {s:0.5,C:blue}Plasma{}{}"
                 },
                 text = {
                     {
@@ -587,7 +535,6 @@ return {
             j_smallpox_spikedball = {
                 name = {
                     'Spiked Ball',
-                    "{s:0.5}created by {s:0.5,V:1}pi_cubed{}",
                 },
                 text = {
                     {
@@ -605,8 +552,6 @@ return {
             j_smallpox_polymorphine = {
                 name = {
                     'Chaotic Polymorphine',
-                    "{s:0.5}created by {s:0.5,C:blue}NinjaBanana{}{}",
-                    "{s:0.5}art by {s:0.5,C:edition}LasagnaFelidae{}{}",
                   },
                 text = {
                     "On reroll, {C:attention}randomize{}",
@@ -617,8 +562,6 @@ return {
             j_smallpox_susie = {
                 name = {
                       "Susie",
-                      "{s:0.5}created by {s:0.5,C:white,E:smallpox_pink}MetaNite64{}{}",
-                      "{s:0.5}art by {s:0.5,C:blue}Plasma{}{}",
                     },
                 text = {
                     {
@@ -635,8 +578,6 @@ return {
             j_smallpox_gun = {
                 name = {
                     "Rock Singer",
-                    "{s:0.5}created by {s:0.5,E:smallpox_pink}TigerTHawk{}{}",
-                    "{s:0.5}programmed by {s:0.5,C:smallpox_typ0,E:1}SLDTyp0{}{}"
                 },
                 text = {
                     "When {C:attention}Blind{} is selected, {C:attention}destroy{}",
@@ -965,8 +906,7 @@ return {
             },
              j_smallpox_missingposter = {
                 name = {
-                  "Missing Poster", 
-                  "{s:0.5}created by {C:blue,s:0.5}LFMoth{}{}",
+                  "Missing Poster",
                 },
                 text = {
                     "When a {C:attention}Joker{} is",
@@ -976,7 +916,6 @@ return {
             j_smallpox_theriantropy = {
                 name = {
                     "Theriantropy",
-                    "{s:0.5}created by Jewel",
                 },
                 text = {
                 "When a {C:attention}face card{} is {C:attention}scored,",
@@ -990,7 +929,6 @@ return {
             j_smallpox_rhythm = {
                 name = {
                         'Amp Up!',
-                        '{s:0.5}created by {s:0.5,V:1}M0xes{}',
                 },
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
