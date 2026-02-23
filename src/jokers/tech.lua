@@ -68,28 +68,29 @@ SMODS.Joker {
 		}
     end,
      calculate = function(self, card, context)
-        if context.other_joker and context.other_joker.config.center.pools and context.other_joker.config.center.pools['Smallpox'] then
-			if (context.other_joker.config.center.rarity == 1 or context.other_joker.config.center.rarity == "Common") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.cxmult
-
-			end
-			if (context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.uxmult
-			end
-			if (context.other_joker.config.center.rarity == 3 or context.other_joker.config.center.rarity == "Rare") then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.rxmult
-				card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
-			end
-			if ((context.other_joker.config.center.rarity == 4 or context.other_joker.config.center.rarity == "Legendary") and context.other_joker ~= card) then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.lxmult
-				card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
-			end
-			if ((context.other_joker.config.center.pools['Meme'] or context.other_joker.config.center.pools['Disease']) and context.other_joker ~= card) then
-				card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.pmult
-			end
-        end
-
 		if context.joker_main then
+			card.ability.extra.tmult = 0
+			card.ability.extra.retriggers = 0
+			for _, joker in ipairs(G.jokers.cards) do
+				if (joker.config.center.rarity == 1 or joker.config.center.rarity == "Common") then
+					card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.cxmult
+				elseif (joker.config.center.rarity == 2 or joker.config.center.rarity == "Uncommon") then
+					card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.uxmult
+				elseif (joker.config.center.rarity == 3 or joker.config.center.rarity == "Rare") then
+					card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.rxmult
+					card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
+				elseif ((joker.config.center.rarity == 4 or joker.config.center.rarity == "Legendary") and joker ~= card) then
+					card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.lxmult
+					card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.rlr
+				end
+				
+				if ((joker.config.center.pools['Meme'] or joker.config.center.pools['Disease']) and joker ~= card) then
+					card.ability.extra.tmult = card.ability.extra.tmult + card.ability.extra.pmult
+				end
+			end
+			if card.ability.extra.tmult <= 1 then
+				return nil
+			end
 			return{
 				xmult = card.ability.extra.tmult,
 				sound = "smallpox_poxofthewild_pop",
@@ -97,15 +98,11 @@ SMODS.Joker {
 			}
 		end
 
-		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card == card then
+		if context.retrigger_joker_check and not context.retrigger_joker and card.ability.extra.retriggers and context.other_card == card then
 			return{
 				repetitions = card.ability.extra.retriggers,
 				sound = "smallpox_poxofthewild_pop",
 			}
-		end
-		if context.final_scoring_step then
-			card.ability.extra.tmult = 0
-			card.ability.extra.retriggers = 0
 		end
     end,
     smallpox_credits = {

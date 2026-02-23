@@ -520,14 +520,14 @@ return {
                 },
                 text = {
                     {
-                      'For every {C:attention}Smallpox{} Joker:',
+                      'For every other {C:attention}Smallpox{} Joker:',
                       '{X:common,C:white}+#1#{}/{X:uncommon,C:white}+#2#{}/{X:rare,C:white}+#3#{}/{X:legendary,C:white}+#4#{} xMult',
                       'according to their {C:dark_edition}rarity.{}',
                       '{X:green,C:white}Meme{} and {X:purple,C:white}Disease{} Jokers grant',
                       'an additional {X:mult,C:white}+#5#{} XMult',
                     },
                     {
-                      'For every {C:rare}Rare{} and {C:legendary}Legendary{} Joker',
+                      'For every other {C:rare}Rare{} and {C:legendary}Legendary{} Joker',
                       'retrigger this Joker {C:attention}#6#{} time{C:inactive}(s){}',
                     },
                 },
