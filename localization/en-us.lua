@@ -1086,7 +1086,10 @@ return {
             k_smallpox_ran = "random",
             k_smallpox_non = "none",
             spox_credits_tab_name = "Credits",
-            spox_credits_tab_1 = "Mysthaps\nM0xes\nLasagnaFelidae\nLexi\nEdward Robinson\nPokeRen\nGhostSalt\nNxkoo\nJewel\nCloudzXIII\nAstro\nAbuffZucchini\nSLDTyp0\nLilyFelli",
+            spox_helpers_tab_name = "Project Staff",
+            spox_contributers_tab_name = "Contributers",
+            spox_helpers = "Plasma, LasagnaFelidae, SLDTyp0, M0xes",
+            spox_credits_tab_1 = "Mysthaps M0xes LasagnaFelidae Lexi Edward Robinson PokeRen GhostSalt Nxkoo Jewel CloudzXIII Astro AbuffZucchini SLDTyp0 LilyFelli",
             Spox_Discord = "Join The Smallpox Discord!",
             Spox_Description = "Smallpox is a collaborative mod where each Joker is made by a different person!"
 		},

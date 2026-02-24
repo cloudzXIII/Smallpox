@@ -61,30 +61,105 @@ local function wrapText(text, maxChars)
     return wrappedText
 end
 
-
 SMODS.current_mod.extra_tabs = function()
 	return {
 		{
 			label = localize("spox_credits_tab_name"),
 			tab_definition_function = function()
+                local SpoxCredits1 = localize("spox_credits_tab_1")
+                local SpoxCredits1Wrapped = wrapText(SpoxCredits1, 1)
+
 				return {
 					n = G.UIT.ROOT,
-					config = { align = "cm", padding = 0.05 },
+					config = { align = "cm", padding = 0.05, colour = G.C.BLACK, r = 0.2, emboss = 0.05, hover = true, shadow = true, outline = 0  },
 					nodes = {
 						{
-							n = G.UIT.R,
-							config = { align = "cm" },
+							n = G.UIT.C,
+							config = { w = 8, h = 6, align = "tm", padding = 0.2, },
 							nodes = {
-								{
-									n = G.UIT.T,
-                                    config = {
-                                        text = localize("spox_credits_tab"),
-                                        colour = G.C.RED,
-                                        scale = 0.5,
-                                        wrap = true,
-                                        maxw = 6
+                                {
+                                    n = G.UIT.R,
+									config = {align = "tm"},
+									nodes = {
+                                        {
+                                            n = G.UIT.C,
+                                            config = {align = "tm"},
+                                            nodes = {
+                                                {
+                                                    n = G.UIT.T,
+                                                    config = {
+                                                        text = localize("spox_credits_tab_name"),
+                                                        colour = G.C.UI.TEXT_LIGHT,
+                                                        scale = 0.75,
+                                                        align = "cm"
+                                                    }
+                                                },
+                                                {
+                                                    n = G.UIT.T,
+                                                    config = {
+                                                        text = localize("spox_helpers_tab_name"),
+                                                        colour = G.C.UI.TEXT_LIGHT,
+                                                        scale = 0.60,
+                                                        align = "cm"
+                                                    }
+                                                },
+                                                {
+                                                    n = G.UIT.T,
+                                                    config = {
+                                                        text = localize("spox_helpers"),
+                                                        colour = G.C.UI.TEXT_LIGHT,
+                                                        scale = 0.50,
+                                                        align = "cm"
+                                                    }
+                                                },
+                                                {
+                                                    n = G.UIT.T,
+                                                    config = {
+                                                        text = localize("spox_contributers_tab_name"),
+                                                        colour = G.C.UI.TEXT_LIGHT,
+                                                        scale = 0.60,
+                                                        align = "cm"
+                                                    }
+                                                },
+                                            }
+                                        }
                                     }
+                                },
+								{
+									n = G.UIT.R,
+									config = { align = "tm", minh},
+									nodes = {
+                                        
+										{
+											n = G.UIT.T,
+											config = {
+												text = SpoxCredits1Wrapped,
+												colour = G.C.UI.TEXT_LIGHT,
+												scale = 0.5,
+                                                align = "tl"
+											}
+                                        },
+                                        {
+                                            n = G.UIT.T,
+											config = {
+												text = SpoxCredits1Wrapped,
+												colour = G.C.UI.TEXT_LIGHT,
+												scale = 0.5,
+                                                align = "tm"
+											}
+                                        },
+                                        {
+                                            n = G.UIT.T,
+											config = {
+												text = SpoxCredits1Wrapped,
+												colour = G.C.UI.TEXT_LIGHT,
+												scale = 0.5,
+                                                align = "tr"
+                                            }										
+                                        }
+									}
 								}
+                                
 							}
 						}
 					}
