@@ -1891,6 +1891,8 @@ function G.FUNCS.calculate_cardshop_cost()
     end
     cost = math.floor(cost)
     G.GAME.smallpox_card_cost = cost
+    G.GAME.smallpox_card_shop.cards[1]:set_debuff()
+    G.GAME.smallpox_card_shop.cards[1].debuff = false
 end
 
 function G.FUNCS.cycle_rank(e)
