@@ -213,10 +213,16 @@ return {
                     'Smallpox',
                 },
                 text = {
-                    "{X:mult,C:white} X#1# {} Mult",
+                    {
                     "{C:green}#2# in #3#{} chance for a",
                     "random Joker to become",
-                    "{V:1}infected{} with {C:attention}Smallpox{}"
+                    "{V:1}infected{} with {C:attention}Smallpox{}",
+                    },
+                    {
+                    "This Joker gains",
+                    "{X:mult,C:white}X#4#{} Mult per {V:1}infection{}",
+                    "{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive} Mult{})"
+                    }
                 }
             },
             j_smallpox_agency = {
