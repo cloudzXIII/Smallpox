@@ -14,7 +14,7 @@ SMODS.Joker {
     atlas = "tigerthawk",
     pos = { x = 0, y = 0 },
     pools = {["Smallpox"] = true, ["Metallic"] = true},
-    config = { extra = { mult = 1, change = 1.5 } },
+    config = { extra = { mult = 1, change = 0.2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.change } }
     end,
