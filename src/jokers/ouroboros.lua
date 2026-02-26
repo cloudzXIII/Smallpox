@@ -14,14 +14,20 @@ SMODS.Joker {
     cost = 8,
     pools = {["Smallpox"] = true}, -- see comment at the top
     blueprint_compat = true, -- set to false if you dont want blueprint to copy
+    eternal_compat = false, -- a bit antithetical to the entire design tbh
     discovered = true,
     unlocked = true,
-    config = { extra = { mult = 1, mult_gain = 0.25 }, },
+    config = { extra = { mult = 1, mult_gain = 0.2 }, },
     pronouns = "any_all", -- see comment at top
+
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
     end,
-    
+    add_to_deck = function(self, card, from_debuff)
+        if not from_debuff then
+            card:set_cost()
+        end
+    end,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
@@ -29,11 +35,12 @@ SMODS.Joker {
             }
         end
 
-        if context.selling_self or (context.joker_type_destroyed and context.card == card) then
+        if (context.selling_self or context.joker_type_destroyed and context.card == card) and not context.blueprint then
             G.GAME.SPOX_OROINIT = card.ability.extra.mult + card.ability.extra.mult_gain
-            print(G.GAME.SPOX_OROINIT)
+            G.GAME.SPOX_OROSHINY = card.edition
         end
     end,
+    in_pool = function() return not G.GAME.SPOX_OROINIT end,
     smallpox_credits = {
 		{
 			text = "By: candycanearter",
@@ -47,6 +54,7 @@ function create_card_for_shop(area)
     if G.GAME.SPOX_OROINIT then 
         local cyclic = SMODS.create_card { key = "j_smallpox_ins_oro", area = area, key_append = "spox_oro" }
         cyclic.ability.extra.mult = G.GAME.SPOX_OROINIT
+        cyclic:set_edition(G.GAME.SPOX_OROSHINY)
         G.GAME.SPOX_OROINIT = nil
 
         create_shop_card_ui(cyclic, 'Joker', area)
@@ -61,8 +69,18 @@ function create_card_for_shop(area)
             end
         }))
 
+
         return cyclic
     end
 
     return ccfs(area)
+end
+
+local set_cost_ref = Card.set_cost
+function Card:set_cost(...)
+    local ret = set_cost_ref(self, ...)
+    if (self.config.center.key == "j_smallpox_ins_oro") then
+		self.sell_cost = 1
+	end
+    return ret
 end
