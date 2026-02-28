@@ -44,18 +44,29 @@ G.YOUAREANIDIOT = G.YOUAREANIDIOT or {
     pressed_f = false
 }
 
-local old_key = love.keypressed
+local old_keyp = love.keypressed
 
 function love.keypressed(key)
     if key == "f" then
-        if G and G.jokers and G.jokers.cards and not G.SETTINGS.paused then
+        if G then
             G.YOUAREANIDIOT.pressed_f = true
-            SMODS.calculate_context({ key_press_f = true })
         end
     end
 
-    return old_key(key)
+    return old_keyp(key)
 end
+
+local old_keyr = love.keyreleased
+function love.keyreleased(key)
+    if key == "f" then
+        if G then
+            G.YOUAREANIDIOT.pressed_f = false
+        end
+    end
+
+    return old_keyr(key)
+end
+
 
 local function get_system_state() -- im sorry
 
@@ -196,10 +207,7 @@ SMODS.Joker {
             mult = mult + count
 
             if G.YOUAREANIDIOT.pressed_f then
-                chips = chips +
-                    math.floor(G.GAME.dollars / 5) * e.f_chips
-
-                G.YOUAREANIDIOT.pressed_f = false
+                chips = chips + math.floor(G.GAME.dollars / 5) * e.f_chips
             end
 
             return {
