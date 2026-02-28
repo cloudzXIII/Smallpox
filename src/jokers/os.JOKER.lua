@@ -153,6 +153,17 @@ SMODS.Joker {
         local e = card.ability.extra
         local s = get_system_state()
 
+        if context.press_play then
+            if G.YOUAREANIDIOT.pressed_f then
+                chips = chips +
+                    math.floor(G.GAME.dollars / 5) * e.f_chips
+
+                G.YOUAREANIDIOT.pressed_f = false
+            end
+            return {
+                chips = chips
+            }
+        end
         if context.joker_main then
             local mult = e.base_mult
             local chips = 0
@@ -163,7 +174,7 @@ SMODS.Joker {
             end
 
             if s.four_pm then
-                mult = mult * (e.pm_xmult ^ context.full_hand_size)
+                mult = mult * (e.pm_xmult ^ #context.full_hand)
             end
 
             if s.june then
@@ -179,7 +190,7 @@ SMODS.Joker {
             end
 
             if s.fps < 30 and context.full_hand_size then
-                money = money + (e.lowfps_money)
+                money = money + (e.lowfps_money * #context.full_hand)
             end
             
             local letters = {}
@@ -195,12 +206,7 @@ SMODS.Joker {
             end)
             mult = mult + count
 
-            if G.YOUAREANIDIOT.pressed_f then
-                chips = chips +
-                    math.floor(G.GAME.dollars / 5) * e.f_chips
-
-                G.YOUAREANIDIOT.pressed_f = false
-            end
+            
 
             return {
                 mult = mult,
