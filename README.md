@@ -8,7 +8,7 @@ A collaborative Balatro mod where everyone adds one Joker!
 2. **The Agency** - By __Mysthaps__
 3. **Amp Up!** - By __m0x3s__
 4. **Astro** - By __Astro__
-5. **Bliss** - By__LasagnaFelidae__
+5. **Bliss** - By __LasagnaFelidae__
 6. **Fire Alarm** - By __Lexi__
 7. **I Will Never Use Jokerforge Again** - By __Edward Robinson__
 8. **Metal Detector** - By __Pokeren__
