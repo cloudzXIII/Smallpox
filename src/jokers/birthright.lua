@@ -1986,12 +1986,16 @@ function G.FUNCS.buy_cardshop(e)
     G.GAME.birthright_cant_cardshop = true
 end
 
-SMODS.current_mod.set_debuff = function(card)
+local debuff = SMODS.current_mod.set_debuff or function (card)
+    return nil
+end
+SMODS.current_mod.set_debuff = function (card)
     if G.GAME.smallpox_card_shop
     and G.GAME.smallpox_card_shop.cards 
     and card == G.GAME.smallpox_card_shop.cards[1] then
         return 'prevent_debuff'
     end
+    return debuff(card)
 end
 
 SMODS.Atlas {
