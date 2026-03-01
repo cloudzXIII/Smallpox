@@ -1977,6 +1977,8 @@ function G.FUNCS.cycle_seal(e)
 end
 
 function G.FUNCS.buy_cardshop(e)
+    G.FUNCS.calculate_cardshop_cost()
+    ease_dollars(-G.GAME.smallpox_card_cost)
     G.playing_card = (G.playing_card and G.playing_card + 1) or 1
     local card_copied = copy_card(G.GAME.smallpox_card_shop.cards[1], nil, nil, G.playing_card)
     card_copied:add_to_deck()
@@ -1986,12 +1988,16 @@ function G.FUNCS.buy_cardshop(e)
     G.GAME.birthright_cant_cardshop = true
 end
 
-SMODS.current_mod.set_debuff = function(card)
+local debuff = SMODS.current_mod.set_debuff or function (card)
+    return nil
+end
+SMODS.current_mod.set_debuff = function (card)
     if G.GAME.smallpox_card_shop
     and G.GAME.smallpox_card_shop.cards 
     and card == G.GAME.smallpox_card_shop.cards[1] then
         return 'prevent_debuff'
     end
+    return debuff(card)
 end
 
 SMODS.Atlas {
