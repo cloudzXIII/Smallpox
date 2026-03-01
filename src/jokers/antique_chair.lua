@@ -1,26 +1,3 @@
--- Hiii! whenever theres a new SMODS release please delete this drawstep and uncomment line 54-72 ^-^
-SMODS.DrawStep {
-    key = 'TEMP_cost_indicator',
-    order = 5,
-    func = function(self)
-        if self.config.center.key == "j_smallpox_antique_chair" then
-            self.children.TEMP_cost_indicator = UIBox({
-                definition = {
-                    n = G.UIT.T, config = { text = G.GAME.xiii_chair_cost, colour = G.C.MONEY, scale = 0.3 }
-                },
-                config = {
-                    parent = self,
-                    align = 'tm',
-                    offset = { x = 0.6, y = 0.55 },
-                    colour = G.C.CLEAR
-                }
-            })
-            self.children.TEMP_cost_indicator:draw()
-        end
-    end,
-    conditions = { vortex = false, facing = 'front' },
-}
-
 SMODS.Atlas({
     key = "chair",
     path = "jokers/cloudzXIII_chair.png",
@@ -47,16 +24,15 @@ SMODS.Joker {
     cost = 5,
     atlas = 'chair',
     pos = { x = 0, y = 0 },
-	discovered = false,
+    discovered = false,
     config = { extra = { x_mult = 1, Xmult_gain = 0.5 } },
     pronouns = "it_its",
 
-    --[[ dynamic buy price indicator on price tag (uncomment when new smods release)
     set_sprites = function(self, card, front)
         G.E_MANAGER:add_event(Event({
             blockable = false,
             func = function()
-                card.children.chair_draw = SMODS.CanvasSprite {
+                card.canvas_text = SMODS.CanvasSprite {
                     canvasW = 71, canvasH = 95,
                     text_offset = { x = 55, y = 15 },
                     text_colour = G.C.MONEY,
@@ -69,7 +45,6 @@ SMODS.Joker {
             end
         }))
     end,
-    --]]
 
     calculate = function(self, card, context)
         if context.joker_main and card.ability.extra.x_mult > 1 then
@@ -80,11 +55,11 @@ SMODS.Joker {
     end,
 
     smallpox_credits = {
-		{
-			text = "By: cloudzXIII",
-			color = G.C.GOLD
-		},
-	},
+        {
+            text = "By: cloudzXIII",
+            color = G.C.GOLD
+        },
+    },
 }
 
 local setcost = Card.set_cost
