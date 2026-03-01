@@ -1,3 +1,4 @@
+
 SMODS.Atlas {
     key = "pk_thunder_ANIM",
     px = 71,
@@ -7,6 +8,13 @@ SMODS.Atlas {
     frames = 24,
     fps = 18
 }
+SMODS.Atlas({
+    key = "pk_thunder_ANIM_ps", 
+    path = "jokers/pkthunder.png", 
+    px = 71,
+    py = 95,
+    atlas_table = "ASSET_ATLAS"
+})
 
 SMODS.Sound {
     key = "iso_thunder_land",
@@ -23,7 +31,8 @@ SMODS.Joker {
     name = "claus",
     rarity = 3,
     cost = 13,
-    atlas = "pk_thunder_ANIM",
+    pos = (not SPOX_CONFIG.SPOX_Photosensitivity and { x = 0, y = 0 }) or { x = 8, y = 0 },
+    atlas = (not SPOX_CONFIG.SPOX_Photosensitivity and "pk_thunder_ANIM") or "pk_thunder_ANIM_ps",
     pools = {["Smallpox"] = true},
     config = {
         extra = {
