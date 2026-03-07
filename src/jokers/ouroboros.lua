@@ -83,7 +83,7 @@ local set_cost_ref = Card.set_cost
 function Card:set_cost(...)
     local ret = set_cost_ref(self, ...)
     if (self.config.center.key == "j_smallpox_ins_oro") then
-		self.sell_cost = 1
+		self.sell_cost = 3
 	end
     return ret
 end
