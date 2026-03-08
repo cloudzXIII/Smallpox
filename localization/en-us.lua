@@ -217,6 +217,7 @@ return {
                     "{C:green}#2# in #3#{} chance for a",
                     "random Joker to become",
                     "{V:1}infected{} with {C:attention}Smallpox{}",
+					"{C:inactive,s:0.8}(Can't infect {C:spades,s:0.8}Disease{C:inactive,s:0.8} Jokers){}"
                     },
                     {
                     "This Joker gains",
@@ -1087,6 +1088,7 @@ return {
 
 	},        
 }
+
 
 
 
