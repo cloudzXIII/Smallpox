@@ -17,11 +17,15 @@ SMODS.Joker {
     eternal_compat = false, -- a bit antithetical to the entire design tbh
     discovered = false,
     unlocked = true,
-    config = { extra = { mult = 1, mult_gain = 0.2 }, },
+    config = { extra = { mult_gain = 0.2 }, },
     pronouns = "any_all", -- see comment at top
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
+        return { vars = { G.GAME.SPOX_OROINIT or 1, card.ability.extra.mult_gain } }
+    end,
+    set_ability = function(self, card)
+        G.GAME.SPOX_OROINIT = G.GAME.SPOX_OROINIT or 1
+        G.GAME.SPOX_OROSHINY = G.GAME.SPOX_OROSHINY or {}
     end,
     add_to_deck = function(self, card, from_debuff)
         if not from_debuff then
@@ -31,16 +35,16 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                xmult = card.ability.extra.mult
+                xmult = G.GAME.SPOX_OROINIT or 1
             }
         end
 
         if (context.selling_self or context.joker_type_destroyed and context.card == card) and not context.blueprint then
-            G.GAME.SPOX_OROINIT = card.ability.extra.mult + card.ability.extra.mult_gain
-            G.GAME.SPOX_OROSHINY = card.edition
+            G.GAME.SPOX_OROINIT = G.GAME.SPOX_OROINIT + card.ability.extra.mult_gain
+            table.insert(G.GAME.SPOX_OROSHINY, card.edition or "base")
         end
     end,
-    in_pool = function() return not G.GAME.SPOX_OROINIT end,
+    in_pool = function() return G.GAME.SPOX_OROSHINY and #G.GAME.SPOX_OROSHINY < 1 end,
     smallpox_credits = {
 		{
 			text = "By: candycanearter",
@@ -51,14 +55,15 @@ SMODS.Joker {
 
 local ccfs = create_card_for_shop
 function create_card_for_shop(area)
-    if G.GAME.SPOX_OROINIT then 
+    if G.GAME.SPOX_OROSHINY and #G.GAME.SPOX_OROSHINY > 0 then
         local cyclic = SMODS.create_card { key = "j_smallpox_ins_oro", area = area, key_append = "spox_oro" }
+        -- dear god ruby what are you doing
         if cyclic.config.center.key ~= "j_smallpox_ins_oro"  then
             return cyclic
         end
-        cyclic.ability.extra.mult = G.GAME.SPOX_OROINIT
-        cyclic:set_edition(G.GAME.SPOX_OROSHINY)
-        G.GAME.SPOX_OROINIT = nil
+
+        local edit = table.remove(G.GAME.SPOX_OROSHINY) or "base"
+        if edit ~= "base" then cyclic:set_edition(edit) end
 
         create_shop_card_ui(cyclic, 'Joker', area)
         cyclic.states.visible = false
