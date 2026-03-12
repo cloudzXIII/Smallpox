@@ -45,6 +45,7 @@ assert(SMODS.load_file("./src/pools.lua"))() -- JOKER POOLS
 assert(SMODS.load_file("./src/sounds.lua"))() -- SOUNDS
 assert(SMODS.load_file("./src/config_menu.lua"))() -- CONFIG MENU
 assert(SMODS.load_file("./src/boosters.lua"))() -- BOOSTERS
+assert(SMODS.load_file("./src/challenges.lua"))()
 --assert(SMODS.load_file("./src/atlasses.lua"))() -- ATLASSES
 
 -- Chud
@@ -140,45 +141,12 @@ function Game:main_menu(change_context)
 
 end
 
-local XmainMenuHook = Game.main_menu
-function Game:main_menu(ctx)
-    local r = XmainMenuHook(self,ctx)
-    if self.title_top then
-        local tg = self.title_top
-        local card = Card(tg.T.x,tg.T.y,G.CARD_W,G.CARD_H,nil,G.P_CENTERS['j_smallpox_smallpox'])
-        card.bypass_discovery_center = true
-        card.T.w = card.T.w * 1.4
-        card.T.h = card.T.h * 1.4
-        card:set_sprites(card.config.center)
-        card.no_ui = true
-        card.states.visible = false
-        self.title_top:emplace(card)
-        self.title_top:align_cards()
-        G.E_MANAGER:add_event(
-            Event{
-                delay = 0.5,
-                func = function ()
-                    if ctx == "splash" then
-                        card.states.visible = true
-                        card:start_materialize({ G.C.WHITE, G.C.WHITE }, true, 0.5)
-                    else
-                        card.states.visible = true
-                        card:start_materialize({ G.C.WHITE, G.C.WHITE }, nil, 0.2)
-                    end
-                    return true
-                end
-            }
-        )
-           for i,v in ipairs(G.title_top.cards) do
-            if v.config.center.key == "c_base" then
-                if v:get_id() == 14 and v:is_suit("Spades") then  --thanks mys minty for this
-                    v:remove()
-                    break
-                end
-            end
-        end
-    end
-end
+-- New Card Code
+SMODS.current_mod.menu_cards = function()
+return {
+  { key = 'j_smallpox_smallpox' },
+  remove_original = true
+} end
 
 if SPOX_CONFIG.SPOX_Startup_Message then
     
